@@ -1,0 +1,102 @@
+.login-container {
+  display: flex;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(155, 61, 61, 1);
+  font-family: 'Outfit', sans-serif;
+  overflow: hidden;
+}
+
+.login-left {
+  position: relative;
+  width: 1000px;
+  background-color: white;
+  border-radius: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 50px;
+}
+
+.login-logo {
+  width: 240px;
+  height: 90px;
+  background: url("assets/images/null") center / cover no-repeat;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+}
+
+.login-title {
+  font-size: 44px;
+  font-weight: bold;
+  margin-bottom: 40px;
+}
+
+.text-red {
+  background: rgba(155, 61, 61, 1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  width: 70%;
+}
+
+.login-form input {
+  height: 60px;
+  padding: 15px 20px;
+  border: 1px solid black;
+  border-radius: 20px;
+  font-size: 24px;
+  outline: none;
+}
+
+.login-button {
+  background-color: rgba(155, 61, 61, 1);
+  color: white;
+  border: 1px solid black;
+  border-radius: 55px;
+  height: 70px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-top: 20px;
+  transition: 0.3s ease;
+}
+
+.login-button:hover {
+  background-color: rgb(120, 40, 40);
+}
+
+.login-register-text {
+  margin-top: 30px;
+  font-size: 30px;
+  font-weight: 300;
+}
+
+.cursor {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.login-right {
+  flex: 1;
+  position: relative;
+}
+
+.login-bg-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("assets/images/heart_1.png") no-repeat center center;
+  background-size: cover;
+  opacity: 0.9;
+}

@@ -1,0 +1,113 @@
+.register-container {
+  position: relative;
+  display: flex;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(155, 61, 61, 1);
+  font-family: 'Outfit', sans-serif;
+}
+
+.register-left {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+.register-left .register-image {
+  background: url("assets/images/pulse_1removebgpreview_1.png") no-repeat center center;
+  background-size: cover;
+  height: 450px;
+  width: 450px;
+  margin-top: 20px;
+}
+
+.register-slogan {
+  text-align: center;
+  font-size: 55px;
+  font-weight: bold;
+}
+
+.register-form-card {
+  background: white;
+  width: 1000px;
+  border-radius: 50px;
+  padding: 60px 80px;
+  position: relative;
+}
+
+.register-logo {
+  width: 244px;
+  height: 94px;
+  background: url("assets/images/null") no-repeat center;
+  background-size: cover;
+  cursor: pointer;
+}
+
+.register-title {
+  font-size: 44px;
+  font-weight: bold;
+  margin-top: 40px;
+  margin-bottom: 30px;
+}
+
+.text-red {
+  background: rgba(155, 61, 61, 1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  align-items: center;
+}
+
+.form-row {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  width: 100%;
+}
+
+.register-form input {
+  width: 45%;
+  padding: 15px 20px;
+  font-size: 18px;
+  border-radius: 20px;
+  border: 1px solid black;
+  outline: none;
+}
+
+.register-button {
+  background-color: rgba(155, 61, 61, 1);
+  color: white;
+  border: 1px solid black;
+  border-radius: 55px;
+  width: 60%;
+  padding: 18px;
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.register-button:hover {
+  background-color: rgb(120, 40, 40);
+}
+
+.register-login-text {
+  font-size: 20px;
+  text-align: center;
+  margin-top: 40px;
+}
+
+.cursor {
+  cursor: pointer;
+  text-decoration: underline;
+}
