@@ -1,8 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { fetchVitals } from "../api";
-
 
 const Dashboardmain = () => {
   const navigate = useNavigate();
