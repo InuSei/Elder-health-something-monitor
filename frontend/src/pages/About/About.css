@@ -1,0 +1,230 @@
+.about-root {
+  position: absolute;
+  overflow: hidden;
+  background: white;
+  height: 1024px;
+  width: 100%;
+    min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  position: relative;
+}
+
+.about-title {
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  align-items: flex-start;
+  height: 88px;
+  width: 989px;
+  position: absolute;
+  left: 270px;
+  top: 200px;
+}
+
+.about-title-black {
+  white-space: nowrap;
+  background: black;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-style: normal;
+  font-size: 70px;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+}
+
+.about-title-highlight {
+  white-space: nowrap;
+  background: rgba(155, 61, 61, 1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-style: normal;
+  font-size: 70px;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+}
+
+/* Additional styling as needed for other classes, e.g. .about-subtitle, .about-frame-9, .about-aboutus, etc. */
+.about-subtitle {
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  align-items: flex-start;
+  height: 50px;
+  width: 805px;
+  position: absolute;
+  left: 370px;
+  top: 290px;
+}
+
+.about-subtitle-black {
+  white-space: nowrap;
+  background: black;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-style: normal;
+  font-size: 40px;
+  font-weight: 300;
+  font-family: 'Outfit', sans-serif;
+}
+
+.about-frame-9 {
+  position: absolute;
+  background: rgba(172, 88, 88, 0.29);
+  height: 31px;
+  width: 136px;
+  top: calc(50% - 260px);
+  left: 670px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 2.5px;
+  padding: 15px 25px;
+  border-radius: 10px;
+}
+
+.about-aboutus {
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  align-items: flex-start;
+  height: 31px;
+  width: 136px;
+  position: relative;
+}
+
+.about-aboutus-text {
+  white-space: nowrap;
+  background: rgba(172, 88, 88, 1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-style: normal;
+  font-size: 26px;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+}
+
+.about-quote-frame {
+  position: absolute;
+  overflow: hidden;
+  height: 394px;
+  width: 614px;
+  border: 3px solid #9b3d3dff;
+  left: 445px;
+  top: 399px;
+  border-radius: 20px;
+}
+
+/* ...Continue this process for each element/class in your markup... */
+
+.about-quote-mark {
+  display: flex;
+  justify-content: flex-start;
+  text-align: left;
+  align-items: flex-start;
+  height: 150px;
+  width: 62px;
+  position: absolute;
+  left: 25px;
+  top: -35px;
+}
+
+.about-quote-mark-text {
+  white-space: nowrap;
+  background: rgba(155, 61, 61, 1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-style: normal;
+  font-size: 160px;
+  font-weight: 200;
+  font-family: 'Outfit', sans-serif;
+}
+
+.about-quote-content {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  align-items: flex-start;
+  height: 198px;
+  width: 568px;
+  position: absolute;
+  left: 26px;
+  top: 70px;
+}
+
+.about-quote-content-text {
+  background: black;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-style: normal;
+  font-size: 26px;
+  font-weight: 400;
+  font-family: 'Outfit', sans-serif;
+}
+
+.about-ecai {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  height: 31px;
+  width: 219px;
+  position: absolute;
+  cursor: pointer;
+  left: 200px;
+  top: 331px;
+}
+
+.about-ecai-black {
+  white-space: nowrap;
+  background: black;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-style: normal;
+  font-size: 26px;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+}
+
+.about-ecai-highlight {
+  white-space: nowrap;
+  background: rgba(172, 88, 88, 1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-style: normal;
+  font-size: 26px;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+}
+
+.about-frame-empty {
+  position: absolute;
+  overflow: hidden;
+  height: 394px;
+  width: 614px;
+  border: 3px solid;
+  left: 1100px;
+  top: 401px;
+  border-radius: 20px;
+}
+
+.about-frame-left {
+  position: absolute;
+  overflow: hidden;
+  height: 394px;
+  width: 614px;
+  left: -215px;
+  border: 3px solid;
+  top: 401px;
+  border-radius: 20px;
+}
+
+
