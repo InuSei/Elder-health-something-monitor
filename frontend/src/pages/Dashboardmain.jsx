@@ -6,33 +6,6 @@ import { fetchVitals } from "../api";
 
 const Dashboardmain = () => {
   const navigate = useNavigate();
-  const [vitals, setVitals] = useState({heart_rate: "---", spo2: "---"});
-
-  useEffect(() => {
-    async function loadVitals() {
-      try {
-        const token = localStorage.getItem("access_token");
-        if (!token) return;
-        const data = await fetchVitals(token);
-        const lastest = data.vitals[0];
-        setVitals({
-          heart_rate: lastest.heart_rate,
-          spo2: lastest.spo2
-        });
-      }
-      catch (err) {
-        console.error("Error fetching vitals: ", err);
-      }
-      
-    }
-
-    loadVitals();
-    const interval = setInterval(loadVitals, 2000);
-    return () => clearInterval(interval);
-
-  },[]);
-
-
 
   return (
     <>
@@ -489,20 +462,6 @@ const Dashboardmain = () => {
           >
             High Risk
           </span>
-        </span>
-        {/* Live Data Display */}
-        <span
-          className="absolute left-[400px] top-[300px] text-[28px] font-bold"
-          style={{ fontFamily: "Outfit" }}
-        >
-          Heart Rate: {vitals.heart_rate} BPM
-        </span>
-
-        <span
-          className="absolute left-[900px] top-[300px] text-[28px] font-bold"
-          style={{ fontFamily: "Outfit" }}
-        >
-          SpO₂: {vitals.spo2} %
         </span>
       </div>
     </>
