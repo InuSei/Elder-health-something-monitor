@@ -19,7 +19,7 @@ const Login = () => {
     try {
       const data = await loginUser(first_name,last_name,birthday);
       localStorage.setItem("access_token", data.access_token);
-      navigate("/Dashboardmain");
+      navigate("/Dashboard");
     }
     catch{
       console.error(err);

@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { useState } from "react";
 import Sidebar from "../../components/Sidebar";
 import { fetchVitals } from "../../api";
 import "./Dashboard.css";
@@ -23,7 +24,7 @@ const Dashboard = () => {
       }
     }
 
-    loadVitas();
+    loadVitals();
     const interval = setInterval(loadVitals, 2000); // refress every 2 seconds
     return () => clearInterval(interval);
   }, [])
@@ -86,4 +87,5 @@ const Dashboard = () => {
     </Sidebar>
   );
 };
+
 export default Dashboard;

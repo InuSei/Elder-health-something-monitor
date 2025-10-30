@@ -6,7 +6,7 @@ import About from "./pages/About/About.jsx";
 import Contact from "./pages/Contact.jsx";
 import Register from "./pages/Register/Register.jsx";
 import Login from "./pages/Register/Login.jsx";
-import Dashboardmain from "./pages/Dashboardmain.jsx";
+import Dashboard from "./pages/Dashboard/Dashboard.jsx";
 import Image3 from "./pages/Image3.jsx";
 import Image7 from "./pages/Image7.jsx";
 import Notification from "./pages/Notification.jsx";
@@ -28,7 +28,7 @@ const App = () => {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/Dashboardmain" element={<Dashboardmain />} />
+        <Route path="/Dashboard" element={<Dashboard />} />
         <Route path="/Image3" element={<Image3 />} />
         <Route path="/Image7" element={<Image7 />} />
         <Route path="/Notification" element={<Notification />} />
