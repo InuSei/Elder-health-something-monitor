@@ -7,8 +7,8 @@ from mysql.connector import Error
 from fastapi.responses import HTMLResponse
 from jose import JWTError, jwt
 
-
-# to start the api: .\venv\Scripts\uvicorn.exe elderly_dashboard.backend.main:app --reload
+# start node: npm run dev
+# to start the api: .\venv\Scripts\uvicorn.exe backend.main:app --reload
 # to start the ngrok: & "C:\Users\kelly\AppData\Roaming\Python\Python313\Scripts\ngrok.exe" http 8000
 #SECRET_KEY = "nAuVMKY6DvHjSn40" 
 

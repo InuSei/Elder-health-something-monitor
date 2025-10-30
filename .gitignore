@@ -1,0 +1,63 @@
+--- Python / Backend ---
+
+Virtual Environment
+
+This is the 'venv' folder you created
+
+venv/
+
+Python cache files
+
+Corrected from 'pycache/' to 'pycache/'
+
+pycache/
+
+Corrected from '*.pyc' to '*.pyc'
+
+*.pyc
+
+--- Node / Frontend ---
+
+Node.js dependencies
+
+This folder is huge and can be re-created with 'npm install'
+
+node_modules/
+
+Frontend build output folder
+
+(Vite creates this when you 'npm run build')
+
+dist/
+
+Log files
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+--- Secrets (VERY IMPORTANT) ---
+
+Environment variable files
+
+These contain your database passwords, API keys, etc.
+
+NEVER commit these!
+
+.env
+.env.*
+!.env.example
+
+--- OS / IDE specific ---
+
+macOS
+
+.DS_Store
+
+Windows
+
+Thumbs.db
+
+VS Code
+
+.vscode/
