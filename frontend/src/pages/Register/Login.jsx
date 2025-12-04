@@ -53,8 +53,8 @@ const Login = () => {
           required 
           />
 
-          <input type="date" 
-          placeholder="Birthday (YY/DD/MM)"
+          <input type="text" 
+          placeholder="Birthday (YY-DD-MM)"
            value={birthday}
            onChange={(e) => setBirthday(e.target.value)}
           required 

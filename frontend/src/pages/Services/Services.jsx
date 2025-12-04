@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import React from "react";
 import NavBar from "../../components/NavBar";
+import ServiceCarousel from "../../components/ServiceCarousel";
 import "./Services.css";
 
 const Services = () => {
@@ -32,41 +33,7 @@ const Services = () => {
             and empowers informed, safer living.
           </p>
         </div>
-
-        <div className="service-cards">
-          <div className="card">
-            <div className="card-image one"></div>
-            <p className="card-text">
-              <span className="black-text">Real-Time</span> <br />
-              <span className="black-text">Health </span>
-              <span className="red-text">Monitoring</span>
-            </p>
-          </div>
-
-          <div className="card">
-            <div className="card-image two"></div>
-            <p className="card-text">
-              <span className="black-text">Interactive </span>
-              <span className="red-text">Dashboard</span>
-            </p>
-          </div>
-
-          <div className="card">
-            <div className="card-image three"></div>
-            <p className="card-text">
-              <span className="black-text">Smart Data </span>
-              <span className="red-text">Transmission</span>
-            </p>
-          </div>
-
-          <div className="card">
-            <div className="card-image four"></div>
-            <p className="card-text">
-              <span className="black-text">Caregiver &amp; </span>
-              <span className="red-text">Family Support</span>
-            </p>
-          </div>
-        </div>
+        <ServiceCarousel />
 
         <div className="decorative ellipse-left"></div>
         <div className="decorative ellipse-right"></div>

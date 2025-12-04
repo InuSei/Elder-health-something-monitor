@@ -45,7 +45,7 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Decorative elements */}
+      {/* Design */}
       <div
         className="img-blur"
         style={{
