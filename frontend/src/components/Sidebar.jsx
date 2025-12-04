@@ -48,7 +48,7 @@ const Sidebar = ({ children }) => {
     </button>
   </div>
   <nav className="flex flex-col mt-10 gap-3 flex-1">
-    <button className={`flex items-center px-6 py-5 hover:bg-gray-100 transition rounded-2xl text-xl ${collapsed ? "justify-center" : ""}`} onClick={() => navigate("/")}>
+    <button className={`flex items-center px-6 py-5 hover:bg-gray-100 transition rounded-2xl text-xl ${collapsed ? "justify-center" : ""}`} onClick={() => navigate("/Dashboard")}>
       <img src="assets/images/home.png" alt="Dashboard" className="w-12 h-12" />
       {!collapsed && <span className="ml-5 font-semibold text-gray-900 text-2xl">Dashboard</span>}
     </button>
@@ -60,7 +60,7 @@ const Sidebar = ({ children }) => {
       <img src="assets/images/oxygen.png" alt="Oxygen Level" className="w-12 h-12" />
       {!collapsed && <span className="ml-5 font-semibold text-gray-900 text-2xl">Oxygen Level</span>}
     </button>
-    <button className={`flex items-center px-6 py-5 hover:bg-gray-100 transition rounded-2xl text-xl ${collapsed ? "justify-center" : ""}`} onClick={() => navigate("/HeartRateHistory")}>
+    <button className={`flex items-center px-6 py-5 hover:bg-gray-100 transition rounded-2xl text-xl ${collapsed ? "justify-center" : ""}`} onClick={() => navigate("/HeartRateLevelHistory")}>
       <img src="assets/images/heart.png" alt="Heart Rate" className="w-12 h-12" />
       {!collapsed && <span className="ml-5 font-semibold text-gray-900 text-2xl">Heart Rate</span>}
     </button>

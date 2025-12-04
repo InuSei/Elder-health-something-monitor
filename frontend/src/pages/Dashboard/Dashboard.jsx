@@ -36,11 +36,11 @@ const Dashboard = () => {
         <div className="cards-row">
           <div className="dashboard-card">
             <h2 className="card-title">Heart Rate Level</h2>
-            <p className="card-value">{vitals.heart_rate} BPM</p>
+            {/* Add heart rate content here if needed */}
           </div>
           <div className="dashboard-card">
             <h2 className="card-title">Oxygen Level</h2>
-            <p className="card-value">{vitals.spo2} %</p>
+            {/* Add oxygen level content here if needed */}
           </div>
         </div>
 
@@ -87,5 +87,4 @@ const Dashboard = () => {
     </Sidebar>
   );
 };
-
 export default Dashboard;

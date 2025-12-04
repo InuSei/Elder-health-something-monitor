@@ -17,11 +17,29 @@ const Login = () => {
     setError("");
     
     try {
-      const data = await loginUser(first_name,last_name,birthday);
-      localStorage.setItem("access_token", data.access_token);
-      navigate("/Dashboard");
+    // Convert YYYY-MM-DD -> YY-MM-DD
+    const [year, month, day] = birthday.split("-");
+    const shortBirthday = `${year.slice(2)}-${month}-${day}`;
+
+    console.log("Sending to backend:", {
+      first_name,
+      last_name,
+      birthday: shortBirthday
+    });
+
+    const data = await loginUser(first_name, last_name, shortBirthday);
+
+    console.log("API response:", data);
+
+    if (!data.access_token) {
+      throw new Error("No token received");
     }
-    catch{
+
+    localStorage.setItem("access_token", data.access_token);
+    navigate("/Dashboard");
+  } 
+
+    catch (err) {
       console.error(err);
       setError("Invalid login credentials");
     }
@@ -54,7 +72,6 @@ const Login = () => {
           />
 
           <input type="date" 
-          placeholder="Birthday (YY-DD-MM)"
            value={birthday}
            onChange={(e) => setBirthday(e.target.value)}
           required 

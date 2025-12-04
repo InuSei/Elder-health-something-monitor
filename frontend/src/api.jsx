@@ -1,4 +1,4 @@
-const API_BASE_URL = "https://nongelatinizing-unsynchronously-kamryn.ngrok-free.dev"; // Local FastAPI server
+const API_BASE_URL = " https://lavona-orthodox-leota.ngrok-free.dev"; // Local FastAPI server
 
 // --- FETCH VITALS ---
 export async function fetchVitals(token) {
