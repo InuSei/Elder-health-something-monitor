@@ -12,13 +12,20 @@ const Dashboard = () => {
       try {
         const token = localStorage.getItem("access_token");
         if (!token) return;
+
         const data = await fetchVitals(token);
-        const latest = data.vitals[0];
-        setVitals({
-          heart_rate: latest.heart_rate,
-          spo2: latest.spo2
-        });
-      }
+        // Check if vitals exist and the array has items
+        if (data && data.vitals && data.vitals.length > 0) {
+          const latest = data.vitals[0];
+          setVitals({
+            heart_rate: latest.heart_rate,
+            spo2: latest.spo2
+          });
+        } else {
+          // Handle case where there is no data yet
+          setVitals({ heart_rate: "---", spo2: "---" });
+        }
+  }
       catch(err){
         console.error("Error fetching vitals: ", err);
       }
@@ -29,18 +36,25 @@ const Dashboard = () => {
     return () => clearInterval(interval);
   }, [])
 
-
   return (
     <Sidebar>
       <div className="dashboard-main">
         <div className="cards-row">
           <div className="dashboard-card">
             <h2 className="card-title">Heart Rate Level</h2>
-            {/* Add heart rate content here if needed */}
+            <div className="value-display" >
+              {/* Display the Heart Rate value */}
+              <span className="value-number">{vitals.heart_rate}</span>
+              <span className="value-unit"> bpm</span>
+            </div>
           </div>
           <div className="dashboard-card">
             <h2 className="card-title">Oxygen Level</h2>
-            {/* Add oxygen level content here if needed */}
+            <div className="value-display" >
+              {/* Display the SpO2 value */}
+              <span className="value-number">{vitals.spo2}</span> 
+              <span className="value-unit"> %</span>
+            </div>
           </div>
         </div>
 

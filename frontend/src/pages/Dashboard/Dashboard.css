@@ -17,6 +17,8 @@
   justify-content: center;
   align-items: flex-start;
   margin-bottom: 40px;
+  width: 100%;
+  max-width: 1200px;
 }
 
 .dashboard-card {
@@ -29,12 +31,38 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: transform 0.2s ease;
 }
 
+
+
 .card-title {
-  font-size: 2.1rem;
-  font-weight: bold;
-  margin-bottom: 1.4em;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #131313;
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.value-display {
+  display: flex;
+  align-items: baseline; 
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.value-number {
+  font-size: 5rem;  
+  font-weight: 800;
+  line-height: 1;   
+}
+
+.value-unit {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #888;
 }
 
 /* The indicators row inside each card */

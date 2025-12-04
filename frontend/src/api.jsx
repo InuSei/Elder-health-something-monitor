@@ -1,13 +1,22 @@
-const API_BASE_URL = " https://lavona-orthodox-leota.ngrok-free.dev"; // Local FastAPI server
+const API_BASE_URL = "https://lavona-orthodox-leota.ngrok-free.dev"; // Local FastAPI server
 
 // --- FETCH VITALS ---
 export async function fetchVitals(token) {
   const response = await fetch(`${API_BASE_URL}/vitals/me`, {
     headers: {
       "Authorization": `Bearer ${token}`,
+      "ngrok-skip-browser-warning": "true",
     },
   });
-  if (!response.ok) throw new Error("Failed to fetch vitals");
+  if (response.status === 404) {
+    return {vitals: []};
+  }
+  if (!response.ok) {
+    // NEW: Read the error details from the backend
+    const errorData = await response.json().catch(() => ({}));
+    const errorMessage = errorData.detail || "Unknown server error";
+    throw new Error(`${response.status}: ${errorMessage}`);
+  }
   return response.json();
 }
 
@@ -42,7 +51,7 @@ export async function signupUser(first_name, last_name, age, birthday, phone_num
 
 // --- Device claiming ---
 export async function claimDevice(device_id, token) {
-  const response = await fetch(`${API_BASE_URL}/devices/claim`, {
+  const response = await fetch(`${API_BASE_URL}/device/claim`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
