@@ -33,9 +33,9 @@ const NavBar = () => {
   {/* Register Button (right-aligned) */}
   <button
     className="bg-[#9b3d3d] text-white text-[18px] px-8 py-2 rounded-lg hover:bg-[#7c2a2a] transition font-semibold font-sans mr-20"
-    onClick={() => navigate("/Register")}
+    onClick={() => navigate("/Login")}
   >
-    Register
+    Login
   </button>
 </nav>
 

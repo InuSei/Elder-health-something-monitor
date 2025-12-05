@@ -50,8 +50,8 @@ const HomePage = () => {
         className="img-blur"
         style={{
           backgroundImage: "url(/assets/images/2_1.png)",
-          top: "260px",
-          left: "823px",
+          top: "300px",
+          left: "1200px",
           width: "650px",
           height: "400px",
         }}

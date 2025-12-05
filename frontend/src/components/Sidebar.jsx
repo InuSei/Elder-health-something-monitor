@@ -69,7 +69,7 @@ const Sidebar = ({ children }) => {
       {!collapsed && <span className="ml-5 font-semibold text-gray-900 text-2xl">Explanation</span>}
     </button>
   </nav>
-  <button className={`flex items-center px-6 py-5 hover:bg-gray-100 transition rounded-2xl mb-3 text-xl ${collapsed ? "justify-center" : ""}`} style={{marginTop: "auto"}} onClick={() => navigate("/Login")}>
+  <button className={`flex items-center px-6 py-5 hover:bg-gray-100 transition rounded-2xl mb-3 text-xl ${collapsed ? "justify-center" : ""}`} style={{marginTop: "auto"}} onClick={() => navigate("/")}>
     <img src="assets/images/image_10.png" alt="Log Out" className="w-12 h-12" />
     {!collapsed && <span className="ml-5 font-semibold text-gray-900 text-2xl">Log Out</span>}
   </button>
