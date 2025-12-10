@@ -22,7 +22,7 @@ export async function fetchVitals(token) {
 
 // --- LOGIN ---
 export async function loginUser(first_name, last_name, birthday) {
-  const response = await fetch(`${API_BASE_URL}/login`, {
+  const response = await fetch(`${API_BASE_URL}/auth/login`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ first_name, last_name, birthday }),
@@ -33,7 +33,7 @@ export async function loginUser(first_name, last_name, birthday) {
 
 // --- SIGNUP ---
 export async function signupUser(first_name, last_name, age, birthday, phone_number) {
-  const response = await fetch(`${API_BASE_URL}/signup`, {
+  const response = await fetch(`${API_BASE_URL}/auth/signup`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
