@@ -1,0 +1,160 @@
+.contact {
+  min-height: 100vh;
+  background: #fff;
+  position: relative;
+  font-family: 'Outfit', Arial, sans-serif;
+  overflow-x: hidden;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden;
+  position: relative;
+
+}
+
+/* Decorative elements */
+.contact__decor-ellipse {
+  position: absolute;
+  left: 0;
+  top: 100px;
+  z-index: 0;
+  pointer-events: none;
+  user-select: none;
+}
+
+
+/* CONTACTS Badge */
+.contact-frame-9 {
+  position: absolute;
+  background: rgba(172, 88, 88, 0.29);
+  height: 31px;
+  width: 160px;
+  top: calc(50% - 250px); /* adjust as needed for visual alignment */
+  left: 90px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 15px 25px;
+  border-radius: 10px;
+  z-index: 2;
+}
+
+.contact-contacts {
+  display: flex;
+  justify-content: flex-start;
+  text-align: center;
+  align-items: flex-start;
+  height: 31px;
+  width: 165px;
+  position: relative;
+}
+
+.contact-contacts-text {
+  white-space: nowrap;
+  background: rgba(172, 88, 88, 1);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  font-style: normal;
+  font-size: 26px;
+  font-weight: bold;
+  font-family: 'Inter', sans-serif;
+}
+
+/* Main content styles */
+.contact__main {
+  padding: 3rem 2rem 2rem 2rem;
+  max-width: 960px;
+  margin: 190px auto 0 auto; /* space beneath badge */
+  position: relative;
+  z-index: 1;
+  background: none;
+}
+
+.contact__title {
+  font-size: 4rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.4rem;
+  font-weight: bold;
+  letter-spacing: 0.7px;
+}
+
+.contact__title-black {
+  color: #000;
+}
+
+.contact__title-highlight {
+  color: #ac5858;
+}
+
+.contact__subtitle {
+  color: #222;
+  font-size: 2rem;
+  font-weight: 300;
+  margin-bottom: 2.5rem;
+}
+
+.contact__details h3 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.contact__details ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact__details li {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  line-height: 1.8;
+}
+
+.contact__details a {
+  color: #ac5858;
+  text-decoration: underline;
+}
+
+.contact__legal {
+  margin-top: 2.5rem;
+  margin-left: 750px;
+}
+
+.contact__legal h4 {
+  color: #ac5858;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.7rem;
+}
+
+.contact__legal ul {
+  display: flex;
+  flex-direction: row;
+  gap: 2.2rem;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.contact__legal a {
+  color: black;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact__legal a:hover {
+  text-decoration: underline;
+}
+
+.contact__footer {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 50px;
+  background: #9b3d3d;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  z-index: 2;
+}
