@@ -10,7 +10,7 @@ router = APIRouter() # use this instead of app = FastAPI()
 @router.post("/signup")
 def signup(user: UserSignUp):
     # ... Paste your signup logic here ...
-    connection = get_db_connection
+    connection = get_db_connection()
 
     if not connection:
          raise HTTPException(status_code=500, detail = "Database connection failed")

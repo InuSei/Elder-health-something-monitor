@@ -186,7 +186,7 @@ void connectToSavedWiFi() {
 }
 
 // --- FastAPI server  ---
-const char* serverName = "https://nongelatinizing-unsynchronously-kamryn.ngrok-free.dev";
+const char* serverName = "https://lavona-orthodox-leota.ngrok-free.dev";
 
 // device ID
 const char* device_id = "ESP32_001";
