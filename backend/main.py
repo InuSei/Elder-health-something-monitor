@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from routers import auth, devices, vitals
+from ai_model import load_risk_model
 
 app = FastAPI(title="Elderly Health Monitoring API")
 
