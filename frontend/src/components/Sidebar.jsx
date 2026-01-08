@@ -7,7 +7,7 @@ function useUser() {
   const [user, setUser] = useState({
     firstName: "Loading...",
     lastName: "",
-    avatar: "assets/images/name.png",
+    avatar: "/name.png",
     phone: "",
     birthday: "",
     device_id: "",
@@ -31,7 +31,7 @@ function useUser() {
       setUser({
         firstName: data.first_name || "User",
         lastName: data.last_name || "",
-        avatar: "assets/images/name.png",
+        avatar: "/name.png",
         phone: data.phone_number || "", // Ensure this matches your backend key (phone vs phone_number)
         birthday: data.birthday || "",
         device_id: data.device_id || "",
