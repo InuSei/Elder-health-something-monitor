@@ -17,8 +17,12 @@ export const validateRegister = (formData) => {
   }
 
   // 3. Birthday
+  const dateRegex = /^\d{4}-\d{2}-\d{2}$/; // Enforces YYYY-MM-DD
   if (!formData.birthday) {
     errors.birthday = "Birthday is required";
+    isValid = false;
+  } else if (!dateRegex.test(formData.birthday)) {
+    errors.birthday = "Format must be YYYY-MM-DD";
     isValid = false;
   }
 

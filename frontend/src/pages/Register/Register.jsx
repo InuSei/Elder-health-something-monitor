@@ -56,7 +56,8 @@ const Register = () => {
     }
   };
 
-  // Helper style
+  const wrapperStyle = { flex: 1, display: "flex", flexDirection: "column" };
+  const inputStyle = { width: "100%", boxSizing: "border-box" }; 
   const errorStyle = { color: "red", fontSize: "12px", marginTop: "2px", display: "block" };
 
  return (
@@ -80,68 +81,77 @@ const Register = () => {
           <span className="text-red">ACCOUNT</span>
         </h2>
 
-        <form className="register-form" onSubmit={handleSubmit}>
+       <form className="register-form" onSubmit={handleSubmit}>
+          
+          {/* ROW 1: First & Last Name */}
           <div className="form-row">
-            <div style={{ width: "100%" }}>
+            <div style={wrapperStyle}>
               <input 
                 type="text" 
                 name="first_name"
                 placeholder="First Name" 
                 value={formData.first_name}
                 onChange={handleChange}
-                style={{ borderColor: errors.first_name ? "red" : "" }}
+                style={{ ...inputStyle, borderColor: errors.first_name ? "red" : "" }}
               />
               {errors.first_name && <span style={errorStyle}>{errors.first_name}</span>}
             </div>
             
-            <div style={{ width: "100%" }}>
+            {/* Add a tiny gap if your CSS doesn't handle it, otherwise this div handles the flex */}
+            <div style={{ width: "10px" }}></div> 
+
+            <div style={wrapperStyle}>
               <input 
                 type="text" 
                 name="last_name"
                 placeholder="Last Name"
                 value={formData.last_name}
                 onChange={handleChange}
-                style={{ borderColor: errors.last_name ? "red" : "" }}
+                style={{ ...inputStyle, borderColor: errors.last_name ? "red" : "" }}
               />
               {errors.last_name && <span style={errorStyle}>{errors.last_name}</span>}
             </div>
           </div>
 
+          {/* ROW 2: Birthday & Age */}
           <div className="form-row">
-            <div style={{ width: "100%" }}>
-              {/* Note: Changed to type="date" for better UX/validation */}
+            <div style={wrapperStyle}>
+              {/* CHANGED BACK TO TEXT INPUT */}
               <input 
-                type="date"
+                type="text"
                 name="birthday"
-                placeholder="YYYY/MM/DD"
+                placeholder="Birthday (YYYY-MM-DD)"
                 value={formData.birthday}
                 onChange={handleChange}
-                style={{ borderColor: errors.birthday ? "red" : "" }}
+                style={{ ...inputStyle, borderColor: errors.birthday ? "red" : "" }}
               />
               {errors.birthday && <span style={errorStyle}>{errors.birthday}</span>}
             </div>
 
-            <div style={{ width: "100%" }}>
+            <div style={{ width: "10px" }}></div>
+
+            <div style={wrapperStyle}>
               <input 
                 type="number"
                 name="age"
                 placeholder="Age"
                 value={formData.age}
                 onChange={handleChange}
-                style={{ borderColor: errors.age ? "red" : "" }}
+                style={{ ...inputStyle, borderColor: errors.age ? "red" : "" }}
               />
               {errors.age && <span style={errorStyle}>{errors.age}</span>}
             </div>
           </div>
 
-          <div style={{ width: "100%" }}>
+          {/* ROW 3: Phone Number */}
+          <div style={{ width: "100%", marginTop: "10px" }}>
             <input
               type="text"
               name="phone_number"
               placeholder="Mobile Number (09xxxxxxxxx)"
               value={formData.phone_number}
               onChange={handleChange}
-              style={{ borderColor: errors.phone_number ? "red" : "" }}
+              style={{ ...inputStyle, borderColor: errors.phone_number ? "red" : "" }}
             />
             {errors.phone_number && <span style={errorStyle}>{errors.phone_number}</span>}
           </div>
@@ -151,7 +161,6 @@ const Register = () => {
           </button>
         </form>
 
-        {/* Global API Message */}
         {message && <p style={{ textAlign: "center", marginTop: "10px" }}>{message}</p>}
 
         <p className="register-login-text">
