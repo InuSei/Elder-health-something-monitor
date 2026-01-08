@@ -22,7 +22,7 @@
 .login-logo {
   width: 240px;
   height: 90px;
-  background: url("assets/images/null") center / cover no-repeat;
+  background: url("/null") center / cover no-repeat;
   cursor: pointer;
   position: absolute;
   top: 20px;
@@ -96,7 +96,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background: url("assets/images/heart_1.png") no-repeat center center;
+  background: url("/heart_1.png") no-repeat center center;
   background-size: cover;
   opacity: 0.9;
 }

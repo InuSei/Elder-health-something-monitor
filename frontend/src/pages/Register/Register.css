@@ -19,7 +19,7 @@
 }
 
 .register-left .register-image {
-  background: url("assets/images/pulse_1removebgpreview_1.png") no-repeat center center;
+  background: url("/pulse_1removebgpreview_1.png") no-repeat center center;
   background-size: cover;
   height: 450px;
   width: 450px;
@@ -43,7 +43,7 @@
 .register-logo {
   width: 244px;
   height: 94px;
-  background: url("assets/images/null") no-repeat center;
+  background: url("/null") no-repeat center;
   background-size: cover;
   cursor: pointer;
 }

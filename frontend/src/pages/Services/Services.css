@@ -38,7 +38,7 @@
   left: 11px;
   width: 620px;
   height: 537px;
-  background: url(assets/images/3_1.png) no-repeat center/cover;
+  background: url(/3_1.png) no-repeat center/cover;
 }
 
 .text-section {
@@ -96,19 +96,19 @@ h1, h2 {
 }
 
 .card-image.one {
-  background: url(./assets/images/4_1.png) no-repeat center/cover;
+  background: url(/4_1.png) no-repeat center/cover;
 }
 
 .card-image.two {
-  background: url(./assets/images/9.png) no-repeat center/cover;
+  background: url(/9.png) no-repeat center/cover;
 }
 
 .card-image.three {
-  background: url(./assets/images/6.png) no-repeat center/cover;
+  background: url(/6.png) no-repeat center/cover;
 }
 
 .card-image.four {
-  background: url(./assets/images/8.png) no-repeat center/cover;
+  background: url(/8.png) no-repeat center/cover;
 }
 
 .card-text {
