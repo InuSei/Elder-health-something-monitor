@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { loginUser } from "../../api";
+import { validateLogin } from "../../utils/validators";
 import "./Login.css";
 
 const Login = () => {
@@ -10,12 +11,26 @@ const Login = () => {
   const [first_name, setFirstName] = useState("");
   const [last_name, setLastName] = useState("");
   const [birthday, setBirthday] = useState("");
-  const [error, setError] = useState("");
+
+  const [errors, setErrors] = useState({});
+  const [apiError, setApiError] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setError("");
+    setApiError("");
+    setErrors({});
     
+    // Bundle data
+    const loginData = { first_name, last_name, birthday };
+    
+    // Validate
+    const { isValid, errors: newErrors } = validateLogin(loginData);
+
+    if (!isValid) {
+      setErrors(newErrors);
+      return;
+    }
+
     try {
     // Convert YYYY-MM-DD -> YY-MM-DD
     const [year, month, day] = birthday.split("-");
@@ -41,11 +56,13 @@ const Login = () => {
 
     catch (err) {
       console.error(err);
-      setError("Invalid login credentials");
+      setApiError("Invalid login credentials");
     }
   };
 
-  return (
+  const errorStyle = { color: "red", fontSize: "12px", marginTop: "2px", textAlign: "left", width: "100%" };
+
+ return (
     <div className="login-container">
       <div className="login-left">
         <div className="login-logo" onClick={() => navigate("/")} />
@@ -55,35 +72,46 @@ const Login = () => {
         </h2>
 
         <form className="login-form" onSubmit={handleSubmit}>
-          <input 
-          type="text" 
-          placeholder="First Name" 
-          value={first_name} 
-          onChange={(e) => setFirstName(e.target.value)} 
-          required 
-          />
+          
+          <div style={{ width: "100%" }}>
+            <input 
+              type="text" 
+              placeholder="First Name" 
+              value={first_name} 
+              onChange={(e) => setFirstName(e.target.value)} 
+              style={{ borderColor: errors.first_name ? "red" : "" }}
+            />
+            {errors.first_name && <span style={errorStyle}>{errors.first_name}</span>}
+          </div>
 
-          <input 
-          type="text" 
-          placeholder="Last Name"
-           value={last_name}
-           onChange={(e) => setLastName(e.target.value)} 
-          required 
-          />
+          <div style={{ width: "100%" }}>
+            <input 
+              type="text" 
+              placeholder="Last Name"
+              value={last_name}
+              onChange={(e) => setLastName(e.target.value)} 
+              style={{ borderColor: errors.last_name ? "red" : "" }}
+            />
+            {errors.last_name && <span style={errorStyle}>{errors.last_name}</span>}
+          </div>
 
-          <input type="date" 
-           value={birthday}
-           onChange={(e) => setBirthday(e.target.value)}
-          required 
-          />
+          <div style={{ width: "100%" }}>
+            <input 
+              type="date" 
+              value={birthday}
+              onChange={(e) => setBirthday(e.target.value)}
+              style={{ borderColor: errors.birthday ? "red" : "" }}
+            />
+             {errors.birthday && <span style={errorStyle}>{errors.birthday}</span>}
+          </div>
 
           <button type="submit" className="login-button">
             Log In
           </button>
         </form>
 
-        {/* Error message appears here */}
-        {error && <p style={{ color: "red", marginTop: "10px" }}>{error}</p>}
+        {/* API Error Display */}
+        {apiError && <p style={{ color: "red", marginTop: "10px" }}>{apiError}</p>}
 
         <p className="login-register-text">
           Don’t have an account?{" "}
