@@ -2,6 +2,8 @@ fastapi
 uvicorn[standard]
 pydantic
 mysql-connector-python
+python-jose[cryptography]
+passlib[bcrypt]
 pandas
 scikit-learn
 python-dotenv
