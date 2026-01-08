@@ -13,7 +13,7 @@ def get_db_connection():
             port=int(os.getenv("DB_PORT", 27003)),
             user=os.getenv("DB_USER", "avnadmin"),
             password=os.getenv("DB_PASSWORD"),
-            database=os.getenv("DB_NAME", "defaultdb")
+            database=os.getenv("DB_NAME", "elderly_health_db")
         )
         return connection
     except Error as e:
