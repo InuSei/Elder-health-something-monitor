@@ -3,7 +3,7 @@ import NavBar from "../../components/NavBar";
 import HeroSection from "../../components/HeroSection"; 
 import "./HomePage.css";
 
-cconst HomePage = () => {
+const HomePage = () => {
   return (
     <div className="homepage-container">
       <NavBar />
