@@ -173,6 +173,11 @@
     display: none; /* Hide logo if you want to save space, or keep it if needed */
   }
 
+  .register-slogan {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
   /* Make the white card compact and fit the screen width */
   .register-form-card {
     width: 90%; 
