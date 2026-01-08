@@ -1,8 +1,8 @@
 # routers/auth.py
 from fastapi import APIRouter, HTTPException
-from database import get_db_connection
-from schemas import UserSignUp, UserLogin
-from dependencies import create_access_token
+from backend.database import get_db_connection
+from backend.schemas import UserSignUp, UserLogin
+from backend.dependencies import create_access_token
 from mysql.connector import Error
 
 router = APIRouter() # use this instead of app = FastAPI()

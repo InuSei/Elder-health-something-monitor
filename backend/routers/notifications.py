@@ -1,7 +1,7 @@
 from fastapi import APIRouter, Depends, HTTPException
 from mysql.connector import Error
-from database import get_db_connection
-from dependencies import verify_token
+from backend.database import get_db_connection
+from backend.dependencies import verify_token
 
 router = APIRouter()
 

@@ -1,8 +1,8 @@
 from fastapi import APIRouter, HTTPException, Depends
-from database import get_db_connection
-from schemas import VitalData
-from dependencies import verify_token
-from ai_model import predict_risk
+from backend.database import get_db_connection
+from backend.schemas import VitalData
+from backend.dependencies import verify_token
+from backend.ai_model import predict_risk
 from mysql.connector import Error
 from datetime import datetime
 
