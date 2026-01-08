@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import auth, devices, vitals, users, notifications
+from backend.routers import auth, devices, vitals, users, notifications
 
 app = FastAPI(title="Elderly Health Monitoring API")
 
