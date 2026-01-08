@@ -7,7 +7,7 @@ from mysql.connector import Error
 
 router = APIRouter() # use this instead of app = FastAPI()
 
-@router.post("/signup/")
+@router.post("/signup")
 def signup(user: UserSignUp):
     
     connection = get_db_connection()
@@ -42,7 +42,7 @@ def signup(user: UserSignUp):
         connection.close()
     pass 
 
-@router.post("/login/")
+@router.post("/login")
 def login(user: UserLogin):
     connection = get_db_connection()
     if not connection:
