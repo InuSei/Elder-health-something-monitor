@@ -146,22 +146,40 @@
 }
 
 /* --- MOBILE RESPONSIVENESS (Phone Mode) --- */
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   .register-container {
     flex-direction: column; /* Stack image and form vertically */
     height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
   }
 
   .register-left {
-    display: none; /* Hide the image/slogan section on small phones to save space */
-    /* Or set min-height: 200px if you want to keep it */
+    width: 100%;
+    height: auto;
+    padding: 30px 20px 10px 20px; 
+    flex: none;
   }
 
+  .register-logo{
+    display: none;
+  }
+
+  .register-slogan {
+    font-size: 36px;
+    margin-bottom: 10px;
+  }
+
+  .register-left .register-image {
+    display: none;
+  }
+  
   .register-form-card {
-    width: 100%;
-    border-radius: 0; /* Remove corners on full mobile */
-    padding: 40px 20px;
-    min-width: auto;
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto 50px auto;
+    padding: 40px;
+    border-radius: 40px;
   }
 
   .form-row {
