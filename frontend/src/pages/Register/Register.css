@@ -1,11 +1,18 @@
-/* --- CONTAINER & LAYOUT --- */
+/* --- 1. GLOBAL RESET (Crucial for fixing overflow) --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* --- 2. CONTAINER & LAYOUT --- */
 .register-container {
   display: flex;
-  min-height: 100vh; /* Use min-height so it expands if content is long */
+  min-height: 100vh;
   width: 100%;
   background-color: rgba(155, 61, 61, 1);
   font-family: 'Outfit', sans-serif;
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  overflow-x: hidden; /* Safety net to stop horizontal scrolling */
 }
 
 .register-left {
@@ -19,7 +26,7 @@
 
 .register-left .register-image {
   background: url("/pulse_1removebgpreview_1.png") no-repeat center center;
-  background-size: contain; /* Ensure image fits */
+  background-size: contain;
   height: 450px;
   width: 450px;
   margin-top: 20px;
@@ -31,41 +38,48 @@
   font-weight: bold;
 }
 
-/* --- CARD STYLES --- */
+/* --- 3. CARD STYLES --- */
 .register-form-card {
   background: white;
-  width: 50%; /* Adjust width relative to screen */
-  max-width: 900px; /* Don't get too wide on huge screens */
-  min-width: 500px;
+  width: 50%;
+  max-width: 900px;
+  min-width: 500px; /* Desktop only constraint */
   border-top-left-radius: 50px;
   border-bottom-left-radius: 50px;
-  /* If you want it detached like a pill: border-radius: 50px; margin: 20px; */
   padding: 60px 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
+.register-logo {
+  width: 244px;
+  height: 94px;
+  background: url("/null") no-repeat center; /* Adjust your logo URL here */
+  background-size: cover;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
 .register-title {
   font-size: 44px;
   font-weight: bold;
   margin-bottom: 30px;
-  text-align: left; /* Keep title aligned left or center as needed */
+  text-align: left;
 }
 
 .text-red {
   color: rgba(155, 61, 61, 1);
 }
 
-/* --- FORM LAYOUT --- */
+/* --- 4. FORM INPUTS --- */
 .register-form {
   display: flex;
   flex-direction: column;
-  gap: 20px; /* Space between rows */
+  gap: 20px;
   width: 100%;
 }
 
-/* This controls the side-by-side rows */
 .form-row {
   display: flex;
   gap: 20px;
@@ -73,23 +87,20 @@
   justify-content: space-between;
 }
 
-/* Each input container expands to fill available space */
 .input-group {
-  flex: 1; /* Makes First/Last and Age/Bday split 50/50 */
+  flex: 1; 
   display: flex;
   flex-direction: column;
 }
 
-/* --- INPUT STYLES --- */
 .register-form input {
-  width: 100%; /* Force input to fill its group container */
-  padding: 15px 20px; /* 20px left padding prevents text from being in middle */
+  width: 100%; 
+  padding: 15px 20px; /* Reduced padding to keep text aligned left */
   font-size: 18px;
   border-radius: 20px;
   border: 1px solid black;
   outline: none;
-  box-sizing: border-box; /* CRITICAL: Prevents padding from breaking layout */
-  text-align: left; /* Ensures text starts at the left */
+  text-align: left; /* Forces text to start at the left */
 }
 
 .register-form input.input-error {
@@ -103,30 +114,30 @@
   margin-left: 10px;
 }
 
-/* --- SPECIAL HANDLING FOR PHONE ROW --- */
-/* We target the row that holds the phone number to center it */
-.form-row.phone-row-container {
-  justify-content: center; /* Centers the input group inside the row */
-}
-
-/* We override flex:1 just for the phone group so it doesn't span 100% */
+/* --- 5. SPECIAL PHONE ROW (Desktop) --- */
 .input-group.phone-group {
-  flex: 0 0 70%; /* Sets phone width to 70% of the card width */
+  flex: unset; 
+  width: 70%; /* Matches button width */
 }
 
-/* --- BUTTON --- */
+/* Used to center the phone input on desktop */
+.form-row.phone-row-container {
+  justify-content: center;
+}
+
+/* --- 6. BUTTON --- */
 .register-button {
   background-color: rgba(155, 61, 61, 1);
   color: white;
   border: none;
   border-radius: 55px;
-  width: 70%; /* Matches the phone input width */
+  width: 70%;
   padding: 18px;
   font-size: 24px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s ease;
-  align-self: center; /* Centers the button in the form flex column */
+  align-self: center;
   margin-top: 10px;
 }
 
@@ -145,10 +156,10 @@
   text-decoration: underline;
 }
 
-/* --- MOBILE RESPONSIVENESS (Phone Mode) --- */
-@media (max-width: 1200px) {
+/* --- 7. YOUR UPDATED MOBILE RESPONSIVENESS --- */
+@media screen and (max-width: 1200px) {
   .register-container {
-    flex-direction: column; /* Stack image and form vertically */
+    flex-direction: column; 
     height: auto;
     min-height: 100vh;
     overflow-y: auto;
@@ -161,7 +172,7 @@
     flex: none;
   }
 
-  .register-logo{
+  .register-logo {
     display: none;
   }
 
@@ -175,21 +186,33 @@
   }
   
   .register-form-card {
-    width: 90%;
+    width: 90%; /* This is good! */
     max-width: 600px;
+    min-width: unset; /* This FIXES the overflow issue */
     margin: 0 auto 50px auto;
-    padding: 40px;
+    padding: 40px 20px;
     border-radius: 40px;
   }
 
+  .register-title {
+    font-size: 32px; /* Smaller title for mobile */
+    text-align: center;
+  }
+
   .form-row {
-    flex-direction: column; /* Stack First Name on top of Last Name */
+    flex-direction: column; 
     gap: 15px;
   }
 
+  /* Make phone input and button full width on mobile */
   .input-group.phone-group, 
   .register-button {
-    width: 100%; /* Full width for phone input and button on mobile */
+    width: 100%; 
     flex: 1;
+  }
+  
+  /* Reset center alignment for mobile so it fills the width */
+  .form-row.phone-row-container {
+    justify-content: flex-start;
   }
 }
