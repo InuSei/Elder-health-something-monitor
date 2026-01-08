@@ -4,9 +4,16 @@ from backend.routers import auth, devices, vitals, users, notifications
 
 app = FastAPI(title="Elderly Health Monitoring API")
 
+origins = [
+    "https://elder-health-monitor.vercel.app", # Your main Vercel link
+    "https://elder-health-something-monitor.vercel.app", # Your other Vercel link
+    "http://localhost:5173", 
+    "http://localhost:3000"
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins = ["*"],
+    allow_origins=origins,
     allow_credentials = True,
     allow_methods=["*"],
     allow_headers=["*"],
