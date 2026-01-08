@@ -146,7 +146,7 @@
 }
 
 /* --- MOBILE RESPONSIVENESS (Phone Mode) --- */
-@media screen and (max-width: 1200px) {
+@media (max-width: 1200px) {
   .register-container {
     flex-direction: column; /* Stack image and form vertically */
     height: auto;
