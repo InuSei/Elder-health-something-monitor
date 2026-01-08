@@ -31,7 +31,7 @@ const Register = () => {
     e.preventDefault();
     setMessage("");
 
-    // 1. CALL THE EXTERNAL VALIDATOR
+    
     const { isValid, errors: newErrors } = validateRegister(formData);
 
     if (!isValid) {
@@ -56,9 +56,6 @@ const Register = () => {
     }
   };
 
-  const wrapperStyle = { flex: 1, display: "flex", flexDirection: "column" };
-  const inputStyle = { width: "100%", boxSizing: "border-box" }; 
-  const errorStyle = { color: "red", fontSize: "12px", marginTop: "2px", display: "block" };
 
  return (
     <div className="register-container">
@@ -85,75 +82,73 @@ const Register = () => {
           
           {/* ROW 1: First & Last Name */}
           <div className="form-row">
-            <div style={wrapperStyle}>
+            <div className="input-group">
               <input 
                 type="text" 
                 name="first_name"
                 placeholder="First Name" 
                 value={formData.first_name}
                 onChange={handleChange}
-                style={{ ...inputStyle, borderColor: errors.first_name ? "red" : "" }}
+                // If error exists, add "input-error" class to turn border red
+                className={errors.first_name ? "input-error" : ""}
               />
-              {errors.first_name && <span style={errorStyle}>{errors.first_name}</span>}
+              {errors.first_name && <span className="error-message">{errors.first_name}</span>}
             </div>
             
-            {/* Add a tiny gap if your CSS doesn't handle it, otherwise this div handles the flex */}
-            <div style={{ width: "10px" }}></div> 
-
-            <div style={wrapperStyle}>
+            <div className="input-group">
               <input 
                 type="text" 
                 name="last_name"
                 placeholder="Last Name"
                 value={formData.last_name}
                 onChange={handleChange}
-                style={{ ...inputStyle, borderColor: errors.last_name ? "red" : "" }}
+                className={errors.last_name ? "input-error" : ""}
               />
-              {errors.last_name && <span style={errorStyle}>{errors.last_name}</span>}
+              {errors.last_name && <span className="error-message">{errors.last_name}</span>}
             </div>
           </div>
 
           {/* ROW 2: Birthday & Age */}
           <div className="form-row">
-            <div style={wrapperStyle}>
-              {/* CHANGED BACK TO TEXT INPUT */}
+            <div className="input-group">
               <input 
                 type="text"
                 name="birthday"
-                placeholder="Birthday (YYYY-MM-DD)"
+                placeholder="YYYY-MM-DD"
                 value={formData.birthday}
                 onChange={handleChange}
-                style={{ ...inputStyle, borderColor: errors.birthday ? "red" : "" }}
+                className={errors.birthday ? "input-error" : ""}
               />
-              {errors.birthday && <span style={errorStyle}>{errors.birthday}</span>}
+              {errors.birthday && <span className="error-message">{errors.birthday}</span>}
             </div>
 
-            <div style={{ width: "10px" }}></div>
-
-            <div style={wrapperStyle}>
+            <div className="input-group">
               <input 
                 type="number"
                 name="age"
                 placeholder="Age"
                 value={formData.age}
                 onChange={handleChange}
-                style={{ ...inputStyle, borderColor: errors.age ? "red" : "" }}
+                className={errors.age ? "input-error" : ""}
               />
-              {errors.age && <span style={errorStyle}>{errors.age}</span>}
+              {errors.age && <span className="error-message">{errors.age}</span>}
             </div>
           </div>
 
-          {/* ROW 3: Phone Number */}
-          <div style={{ width: "100%", marginTop: "10px" }}>
-            <input
-              type="text"
-              name="phone_number"
-              placeholder="Mobile Number (09xxxxxxxxx)"
-              value={formData.phone_number}
-              onChange={handleChange}
-              style={{ ...inputStyle, borderColor: errors.phone_number ? "red" : "" }}
-            />
-            {errors.phone_number && <span style={errorStyle}>{errors.phone_number}</span>}
+          {/* ROW 3: Phone Number (Centered & Wider) */}
+          <div className="form-row">
+             {/* We add 'phone-group' class to make this one wider (60%) */}
+            <div className="input-group phone-group">
+              <input
+                type="text"
+                name="phone_number"
+                placeholder="Mobile Number (09xxxxxxxxx)"
+                value={formData.phone_number}
+                onChange={handleChange}
+                className={errors.phone_number ? "input-error" : ""}
+              />
+              {errors.phone_number && <span className="error-message">{errors.phone_number}</span>}
+            </div>
           </div>
 
           <button type="submit" className="register-button">
