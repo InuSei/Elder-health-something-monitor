@@ -2,6 +2,6 @@ fastapi
 uvicorn
 pydantic
 mysql-connector-python
-python-jose[cryptography]
 pandas
 scikit-learn
+python-dotenv
