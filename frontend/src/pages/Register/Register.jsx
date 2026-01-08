@@ -135,9 +135,8 @@ const Register = () => {
             </div>
           </div>
 
-          {/* ROW 3: Phone Number (Centered & Wider) */}
-          <div className="form-row">
-             {/* We add 'phone-group' class to make this one wider (60%) */}
+          {/* ROW 3: Phone Number */}
+          <div className="form-row phone-row-container"> 
             <div className="input-group phone-group">
               <input
                 type="text"
@@ -150,7 +149,6 @@ const Register = () => {
               {errors.phone_number && <span className="error-message">{errors.phone_number}</span>}
             </div>
           </div>
-
           <button type="submit" className="register-button">
             Create Account
           </button>

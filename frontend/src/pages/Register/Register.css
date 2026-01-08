@@ -1,16 +1,15 @@
+/* --- CONTAINER & LAYOUT --- */
 .register-container {
-  position: relative;
   display: flex;
-  height: 100vh;
+  min-height: 100vh; /* Use min-height so it expands if content is long */
   width: 100%;
-  overflow: hidden;
   background-color: rgba(155, 61, 61, 1);
   font-family: 'Outfit', sans-serif;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
 .register-left {
   flex: 1;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,7 +19,7 @@
 
 .register-left .register-image {
   background: url("/pulse_1removebgpreview_1.png") no-repeat center center;
-  background-size: cover;
+  background-size: contain; /* Ensure image fits */
   height: 450px;
   width: 450px;
   margin-top: 20px;
@@ -32,67 +31,65 @@
   font-weight: bold;
 }
 
+/* --- CARD STYLES --- */
 .register-form-card {
   background: white;
-  width: 90%; 
-  max-width: 1000px; 
-  border-radius: 50px;
+  width: 50%; /* Adjust width relative to screen */
+  max-width: 900px; /* Don't get too wide on huge screens */
+  min-width: 500px;
+  border-top-left-radius: 50px;
+  border-bottom-left-radius: 50px;
+  /* If you want it detached like a pill: border-radius: 50px; margin: 20px; */
   padding: 60px 80px;
-  position: relative;
-  margin: 20px;
-}
-.register-logo {
-  width: 244px;
-  height: 94px;
-  background: url("/null") no-repeat center;
-  background-size: cover;
-  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .register-title {
   font-size: 44px;
   font-weight: bold;
-  margin-top: 40px;
   margin-bottom: 30px;
+  text-align: left; /* Keep title aligned left or center as needed */
 }
 
 .text-red {
-  background: rgba(155, 61, 61, 1);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  color: rgba(155, 61, 61, 1);
 }
 
+/* --- FORM LAYOUT --- */
 .register-form {
   display: flex;
   flex-direction: column;
-  gap: 25px;
-  align-items: center;
-}
-
-.form-row {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
+  gap: 20px; /* Space between rows */
   width: 100%;
 }
 
-input-group {
+/* This controls the side-by-side rows */
+.form-row {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+/* Each input container expands to fill available space */
+.input-group {
+  flex: 1; /* Makes First/Last and Age/Bday split 50/50 */
   display: flex;
   flex-direction: column;
-  flex: 1; 
 }
 
-.input-group.phone-group {
-  flex: 0 0 60%; 
-}
-
+/* --- INPUT STYLES --- */
 .register-form input {
-  width: 45%;
-  padding: 15px 20px;
+  width: 100%; /* Force input to fill its group container */
+  padding: 15px 20px; /* 20px left padding prevents text from being in middle */
   font-size: 18px;
   border-radius: 20px;
   border: 1px solid black;
   outline: none;
+  box-sizing: border-box; /* CRITICAL: Prevents padding from breaking layout */
+  text-align: left; /* Ensures text starts at the left */
 }
 
 .register-form input.input-error {
@@ -103,20 +100,34 @@ input-group {
   color: red;
   font-size: 12px;
   margin-top: 5px;
-  margin-left: 10px; /* Aligns with the curve of the pill */
+  margin-left: 10px;
 }
 
+/* --- SPECIAL HANDLING FOR PHONE ROW --- */
+/* We target the row that holds the phone number to center it */
+.form-row.phone-row-container {
+  justify-content: center; /* Centers the input group inside the row */
+}
+
+/* We override flex:1 just for the phone group so it doesn't span 100% */
+.input-group.phone-group {
+  flex: 0 0 70%; /* Sets phone width to 70% of the card width */
+}
+
+/* --- BUTTON --- */
 .register-button {
   background-color: rgba(155, 61, 61, 1);
   color: white;
-  border: 1px solid black;
+  border: none;
   border-radius: 55px;
-  width: 60%;
+  width: 70%; /* Matches the phone input width */
   padding: 18px;
   font-size: 24px;
   font-weight: bold;
   cursor: pointer;
   transition: 0.3s ease;
+  align-self: center; /* Centers the button in the form flex column */
+  margin-top: 10px;
 }
 
 .register-button:hover {
@@ -126,7 +137,7 @@ input-group {
 .register-login-text {
   font-size: 20px;
   text-align: center;
-  margin-top: 40px;
+  margin-top: 30px;
 }
 
 .cursor {
@@ -134,47 +145,33 @@ input-group {
   text-decoration: underline;
 }
 
-@media (max-width: 1200px) {
+/* --- MOBILE RESPONSIVENESS (Phone Mode) --- */
+@media screen and (max-width: 1024px) {
   .register-container {
-    flex-direction: column;
+    flex-direction: column; /* Stack image and form vertically */
     height: auto;
-    min-height: 100vh;
-    overflow-y: auto;
   }
 
   .register-left {
-    width: 100%;
-    height: auto;
-    padding: 30px 20px 10px 20px; 
-    flex: none;
-  }
-  .register-logo{
-    display: none;
-  }
-  .register-slogan {
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-
-  .register-left .register-image {
-    display: none;
+    display: none; /* Hide the image/slogan section on small phones to save space */
+    /* Or set min-height: 200px if you want to keep it */
   }
 
   .register-form-card {
-    width: 90%;
-    max-width: 600px;
-    margin: 0 auto 50px auto;
-    padding: 40px;
-    border-radius: 40px;
+    width: 100%;
+    border-radius: 0; /* Remove corners on full mobile */
+    padding: 40px 20px;
+    min-width: auto;
   }
 
   .form-row {
-    flex-direction: column;
+    flex-direction: column; /* Stack First Name on top of Last Name */
     gap: 15px;
   }
 
-  .register-form input {
-    width: 100%;
-    box-sizing: border-box;
+  .input-group.phone-group, 
+  .register-button {
+    width: 100%; /* Full width for phone input and button on mobile */
+    flex: 1;
   }
 }
