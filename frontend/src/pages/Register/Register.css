@@ -78,7 +78,7 @@
 .input-group {
   display: flex;
   flex-direction: column;
-  width: 45%; /* Keeps your side-by-side look */
+  width: 100%; /* Keeps your side-by-side look */
 }
 
 .input-group.phone-group {
