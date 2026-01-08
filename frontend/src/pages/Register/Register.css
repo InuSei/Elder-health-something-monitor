@@ -154,50 +154,77 @@
 }
 
 /* --- MOBILE RESPONSIVENESS (Phone Mode) --- */
+/* --- MOBILE RESPONSIVENESS (Fits tightly on phone) --- */
 @media screen and (max-width: 1200px) {
   .register-container {
-    flex-direction: column; /* Stack image and form vertically */
+    flex-direction: column;
     height: auto;
     min-height: 100vh;
-    overflow-y: auto;
+    padding: 20px 0; /* Add small vertical padding to the page */
   }
 
   .register-left {
-    width: 100%;
-    height: auto;
-    padding: 30px 20px 10px 20px; 
-    flex: none;
+    display: none; /* Hide the big image/slogan section */
   }
 
-  .register-logo{
-    display: none;
+  .register-logo {
+    display: none; /* Hide logo if you want to save space, or keep it if needed */
   }
 
-  .register-slogan {
-    font-size: 36px;
-    margin-bottom: 10px;
-  }
-
-  .register-left .register-image {
-    display: none;
-  }
-  
+  /* Make the white card compact and fit the screen width */
   .register-form-card {
-    width: 90%;
-    max-width: 600px;
-    margin: 0 auto 50px auto;
-    padding: 40px;
-    border-radius: 40px;
+    width: 90%; 
+    max-width: 400px; /* Limits width so it doesn't look stretched on tablets */
+    min-width: unset; 
+    margin: 0 auto; /* Centers the card */
+    padding: 30px 20px; /* Reduced padding (was 60px) */
+    border-radius: 25px; /* Smaller rounded corners */
+  }
+
+  /* Smaller Title */
+  .register-title {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 20px; /* Less space under title */
+    margin-top: 10px;
+  }
+
+  .register-slogan{
+    font-size: 36px;
+    margin-top: 10px;
+  }
+
+  .register-form {
+    gap: 12px; /* Tighter gap between rows (was 25px) */
   }
 
   .form-row {
-    flex-direction: column; /* Stack First Name on top of Last Name */
-    gap: 15px;
+    flex-direction: column;
+    gap: 12px;
   }
 
-  .input-group.phone-group, 
-  .register-button {
-    width: 100%; /* Full width for phone input and button on mobile */
+  /* Thinner Inputs */
+  .register-form input {
+    padding: 12px 15px; /* Smaller padding makes the bars thinner */
+    font-size: 16px; /* Slightly smaller font for mobile */
+  }
+
+  /* Full width Phone Input */
+  .input-group.phone-group {
+    width: 100%;
     flex: 1;
+  }
+
+  /* Compact Button */
+  .register-button {
+    width: 100%;
+    padding: 12px; /* Thinner button */
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+  .register-login-text {
+    font-size: 16px;
+    margin-top: 20px;
   }
 }
