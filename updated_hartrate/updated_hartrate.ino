@@ -186,7 +186,7 @@ void connectToSavedWiFi() {
 }
 
 // --- FastAPI server  ---
-const char* serverName = "https://lavona-orthodox-leota.ngrok-free.dev";
+const char* serverName = "https://beneficial-determination-production-2c43.up.railway.app";
 
 // device ID
 const char* device_id = "ESP32_001";
@@ -225,6 +225,16 @@ void registerDevice(){
   String payload = "{\"device_id\":\"" + String(device_id) + "\"}";
 
   int httpResponseCode = http.POST(payload);
+
+  if (httpResponseCode == 404 || httpResponseCode == 500) {
+      Serial.println("❌ Server doesn't recognize device. Resetting registration...");
+      
+      preferences.begin("device-info", false);
+      preferences.putBool("registered", false); // Force it to be false
+      preferences.end();
+      
+      registerDevice(); // Try registering again immediately
+    }
 
   if (httpResponseCode == 200) {
     Serial.println("Device successfully registered!");
