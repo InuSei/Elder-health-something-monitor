@@ -7,7 +7,7 @@ const HeroSection = () => {
   return (
     <div className="relative z-10 flex flex-col items-start justify-center w-full max-w-4xl px-6 md:px-12 lg:px-24 py-12 md:py-32">
       <h1 className="text-4xl md:text-[55px] font-light leading-tight">
-        Welcome to <span className="text-[#9b3d3d] font-normal">ElderlyCare.Co</span>
+        Welcome to <span className="text-[#9b3d3d] font-normal">ElderlyCare.Ai</span>
       </h1>
       
       <h2 className="text-4xl md:text-[60px] font-bold leading-tight mt-2">
