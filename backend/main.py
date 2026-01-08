@@ -6,7 +6,6 @@ app = FastAPI(title="Elderly Health Monitoring API")
 
 origins = [
     "https://elder-health-monitor.vercel.app", # Your main Vercel link
-    "https://elder-health-something-monitor.vercel.app", # Your other Vercel link
     "http://localhost:5173", 
     "http://localhost:3000"
 ]
