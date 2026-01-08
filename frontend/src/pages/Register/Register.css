@@ -66,6 +66,7 @@
   flex-direction: column;
   gap: 25px;
   align-items: center;
+  width: 100%; /* Ensure form takes full width of the card */
 }
 
 .form-row {
@@ -75,23 +76,24 @@
   width: 100%;
 }
 
-.input-group {
+input-group {
   display: flex;
   flex-direction: column;
-  width: 100%; /* Keeps your side-by-side look */
+  flex: 1; 
 }
 
 .input-group.phone-group {
-  width: 80%; /* Make it a bit wider than the others */
+  flex: 0 0 60%; 
 }
 
 .register-form input {
-  width: 45%;
-  padding: 15px 100px;
+  width: 100%; 
+  padding: 15px 20px; 
   font-size: 18px;
   border-radius: 20px;
   border: 1px solid black;
   outline: none;
+  box-sizing: border-box; 
 }
 
 .register-form input.input-error {
@@ -102,7 +104,7 @@
   color: red;
   font-size: 12px;
   margin-top: 5px;
-  margin-left: 20px; /* Aligns with the curve of the pill */
+  margin-left: 10px; /* Aligns with the curve of the pill */
 }
 
 .register-button {
