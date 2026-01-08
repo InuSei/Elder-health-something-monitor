@@ -56,10 +56,12 @@ const Login = () => {
 
     catch (err) {
       console.error(err);
-      setApiError("Invalid login credentials");
+      setApiError("Invalid login credentials or connection error");
     }
   };
 
+  const wrapperStyle = { width: "100%", marginBottom: "15px" }; // Spacing between inputs
+  const inputStyle = { width: "100%", boxSizing: "border-box" }; // Ensures padding doesn't break width
   const errorStyle = { color: "red", fontSize: "12px", marginTop: "2px", textAlign: "left", width: "100%" };
 
  return (
@@ -73,34 +75,36 @@ const Login = () => {
 
         <form className="login-form" onSubmit={handleSubmit}>
           
-          <div style={{ width: "100%" }}>
+          <div style={wrapperStyle}>
             <input 
               type="text" 
               placeholder="First Name" 
               value={first_name} 
               onChange={(e) => setFirstName(e.target.value)} 
-              style={{ borderColor: errors.first_name ? "red" : "" }}
+              style={{ ...inputStyle, borderColor: errors.first_name ? "red" : "" }}
             />
             {errors.first_name && <span style={errorStyle}>{errors.first_name}</span>}
           </div>
 
-          <div style={{ width: "100%" }}>
+          <div style={wrapperStyle}>
             <input 
               type="text" 
               placeholder="Last Name"
               value={last_name}
               onChange={(e) => setLastName(e.target.value)} 
-              style={{ borderColor: errors.last_name ? "red" : "" }}
+              style={{ ...inputStyle, borderColor: errors.last_name ? "red" : "" }}
             />
             {errors.last_name && <span style={errorStyle}>{errors.last_name}</span>}
           </div>
 
-          <div style={{ width: "100%" }}>
+          <div style={wrapperStyle}>
+            {/* Reverted to Text Input for consistency */}
             <input 
               type="date" 
+              placeholder="Birthday (YYYY-MM-DD)"
               value={birthday}
               onChange={(e) => setBirthday(e.target.value)}
-              style={{ borderColor: errors.birthday ? "red" : "" }}
+              style={{ ...inputStyle, borderColor: errors.birthday ? "red" : "" }}
             />
              {errors.birthday && <span style={errorStyle}>{errors.birthday}</span>}
           </div>
