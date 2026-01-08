@@ -174,9 +174,9 @@
   /* Make the white card compact and fit the screen width */
   .register-form-card {
     width: 90%; 
-    max-width: 400px; /* Limits width so it doesn't look stretched on tablets */
+    max-width: 200px; /* Limits width so it doesn't look stretched on tablets */
     min-width: unset; 
-    margin: 0 auto; /* Centers the card */
+    margin: 0 auto 50px auto; /* Centers the card */
     padding: 30px 20px; /* Reduced padding (was 60px) */
     border-radius: 25px; /* Smaller rounded corners */
   }
