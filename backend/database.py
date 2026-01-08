@@ -1,15 +1,16 @@
 import mysql.connector
 from mysql.connector import Error
+import os
 
 def get_db_connection():
     try:
-        # REPLACE THESE with your actual Aiven details
+        # We use os.getenv to keep secrets out of GitHub
         connection = mysql.connector.connect(
-            host="elderly-health-db-lspu-8527.f.aivencloud.com", # From Aiven
-            user="avnadmin",                           # From Aiven
-            password="AVNS_UzvSw11mmPQ4ZKOjDYf",       # From Aiven
-            database="defaultdb",                      # Usually 'defaultdb' on Aiven
-            port=27003                                 # From Aiven
+            host=os.getenv("DB_HOST", "elderly-health-db-lspu-8527.f.aivencloud.com"),
+            port=int(os.getenv("DB_PORT", 27003)),
+            user=os.getenv("DB_USER", "avnadmin"),
+            password=os.getenv("DB_PASSWORD"),
+            database=os.getenv("DB_NAME", "defaultdb")
         )
         return connection
     except Error as e:
