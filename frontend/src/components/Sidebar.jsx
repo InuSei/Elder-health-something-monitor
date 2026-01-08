@@ -156,23 +156,23 @@ const Sidebar = ({ children }) => {
 
         <nav className="flex flex-col mt-10 gap-3 flex-1 overflow-y-auto">
           <button className={`flex items-center px-6 py-5 hover:bg-gray-100 transition rounded-2xl text-xl ${collapsed ? "justify-center" : ""}`} onClick={() => navigate("/Dashboard")}>
-            <img src="assets/images/home.png" alt="Dashboard" className="w-12 h-12" />
+            <img src="home.png" alt="Dashboard" className="w-12 h-12" />
             {!collapsed && <span className="ml-5 font-semibold text-gray-900 text-2xl">Dashboard</span>}
           </button>
           <button className={`flex items-center px-6 py-5 hover:bg-gray-100 transition rounded-2xl text-xl ${collapsed ? "justify-center" : ""}`} onClick={() => navigate("/Notification")}>
-            <img src="assets/images/bell.png" alt="Notification" className="w-12 h-12" />
+            <img src="bell.png" alt="Notification" className="w-12 h-12" />
             {!collapsed && <span className="ml-5 font-semibold text-gray-900 text-2xl">Notification</span>}
           </button>
           <button className={`flex items-center px-6 py-5 hover:bg-gray-100 transition rounded-2xl text-xl ${collapsed ? "justify-center" : ""}`} onClick={() => navigate("/OxygenLevelHistory")}>
-            <img src="assets/images/oxygen.png" alt="Oxygen Level" className="w-12 h-12" />
+            <img src="oxygen.png" alt="Oxygen Level" className="w-12 h-12" />
             {!collapsed && <span className="ml-5 font-semibold text-gray-900 text-2xl">Oxygen Level</span>}
           </button>
           <button className={`flex items-center px-6 py-5 hover:bg-gray-100 transition rounded-2xl text-xl ${collapsed ? "justify-center" : ""}`} onClick={() => navigate("/HeartRateLevelHistory")}>
-            <img src="assets/images/heart.png" alt="Heart Rate" className="w-12 h-12" />
+            <img src="heart.png" alt="Heart Rate" className="w-12 h-12" />
             {!collapsed && <span className="ml-5 font-semibold text-gray-900 text-2xl">Heart Rate</span>}
           </button>
           <button className={`flex items-center px-6 py-5 hover:bg-gray-100 transition rounded-2xl text-xl ${collapsed ? "justify-center" : ""}`} onClick={() => navigate("/Explanation")}>
-            <img src="assets/images/info.png" alt="Explanation" className="w-12 h-12" />
+            <img src="info.png" alt="Explanation" className="w-12 h-12" />
             {!collapsed && <span className="ml-5 font-semibold text-gray-900 text-2xl">Explanation</span>}
           </button>
         </nav>
@@ -181,7 +181,7 @@ const Sidebar = ({ children }) => {
             localStorage.removeItem("access_token");
             navigate("/", { replace: true });
         }}>
-          <img src="assets/images/image_10.png" alt="Log Out" className="w-12 h-12" />
+          <img src="image_10.png" alt="Log Out" className="w-12 h-12" />
           {!collapsed && <span className="ml-5 font-semibold text-gray-900 text-2xl">Log Out</span>}
         </button>
       </aside>

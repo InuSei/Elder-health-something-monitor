@@ -20,7 +20,7 @@ const NavBar = () => {
             onClick={() => handleNav("/")}
   >
             <img 
-              src="/assets/images/1_1.png" 
+              src="/1_1.png" 
               alt="Logo" 
               className="h-12 md:h-16 w-auto object-contain" 
             />

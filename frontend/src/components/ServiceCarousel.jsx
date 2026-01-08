@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
 const cardData = [
-  { image: "./assets/images/4_1.png", text: (<><span className="text-black font-bold">Real-Time</span><br/><span className="text-black font-bold">Health </span><span className="text-[rgba(155,61,61,1)] font-bold">Monitoring</span></>) },
-  { image: "./assets/images/9.png", text: (<><span className="text-black font-bold">Interactive </span><br/><span className="text-[rgba(155,61,61,1)] font-bold">Dashboard</span></>) },
-  { image: "./assets/images/6.png", text: (<><span className="text-black font-bold">Smart Data </span><br/><span className="text-[rgba(155,61,61,1)] font-bold">Transmission</span></>) },
-  { image: "./assets/images/8.png", text: (<><span className="text-black font-bold">Caregiver &amp; </span><span className="text-[rgba(155,61,61,1)] font-bold">Family Support</span></>) },
+  { image: "4_1.png", text: (<><span className="text-black font-bold">Real-Time</span><br/><span className="text-black font-bold">Health </span><span className="text-[rgba(155,61,61,1)] font-bold">Monitoring</span></>) },
+  { image: "9.png", text: (<><span className="text-black font-bold">Interactive </span><br/><span className="text-[rgba(155,61,61,1)] font-bold">Dashboard</span></>) },
+  { image: "6.png", text: (<><span className="text-black font-bold">Smart Data </span><br/><span className="text-[rgba(155,61,61,1)] font-bold">Transmission</span></>) },
+  { image: "8.png", text: (<><span className="text-black font-bold">Caregiver &amp; </span><span className="text-[rgba(155,61,61,1)] font-bold">Family Support</span></>) },
 ];
 
 export default function ServiceCarousel() {
