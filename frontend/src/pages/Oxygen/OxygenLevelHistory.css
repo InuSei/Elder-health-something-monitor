@@ -36,13 +36,13 @@
   padding: 1.3em 1.25em;
 }
 .oxy-history-card2.normal {
-  background: #c0ecc7;
+  background: #abebb6;
 }
 .oxy-history-card2.high {
-  background: #f7d1d1;
+  background: #fac9c9;
 }
 .oxy-history-card2.abnormal {
-  background: #fde1af;
+  background: #ffdb9c;
 }
 
 .oxy-history-icons {
@@ -61,13 +61,15 @@
   background: #4CAF50;
 }
 .status-btn.normal {
-  background: #26b559;
+  background: #26b559 !important;
+  color: #fff;
 }
 .status-btn.high {
-  background: #df6464;
+  background: #df6464 !important;
+  color: #fff;
 }
 .status-btn.abnormal {
-  background: #dbad3c;
+  background: #dbad3c !important;
   color: #fff;
 }
 .oxy-history-value {

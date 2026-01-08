@@ -36,13 +36,13 @@
   padding: 1.3em 1.25em;
 }
 .history-card.normal {
-  background: #c0ecc7;
+  background: #abebb6;
 }
 .history-card.high {
-  background: #f7d1d1;
+  background: #fac9c9;
 }
 .history-card.abnormal {
-  background: #fde1af;
+  background: #ffdb9c;
 }
 
 .history-icons {
@@ -59,15 +59,18 @@
   border: none;
   color: #fff;
   background: #4CAF50;
+  display: inline-block;
 }
 .status-btn.normal {
-  background: #26b559;
+  background: #26b559 !important;
+  color: #fff;
 }
 .status-btn.high {
-  background: #df6464;
+  background: #df6464 !important;
+  color: #fff;
 }
 .status-btn.abnormal {
-  background: #dbad3c;
+  background: #dbad3c !important;
   color: #fff;
 }
 .history-value {

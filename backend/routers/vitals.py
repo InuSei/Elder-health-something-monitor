@@ -1,42 +1,70 @@
 from fastapi import APIRouter, HTTPException, Depends
 from database import get_db_connection
 from schemas import VitalData
+from dependencies import verify_token
 from ai_model import predict_risk
 from mysql.connector import Error
+from datetime import datetime
 
 router = APIRouter()
 
 # --- 1. RECEIVE DATA FROM ESP32 ---
 @router.post("/sensor/data")
 def record_sensor_data(data: VitalData):
-    # Calculate Risk using the AI model
+    # 1. Run AI Model
     risk_result = predict_risk(data.heart_rate, data.spo2)
+
+    # 2. Prepare Timestamp
+    current_time = data.timestamp if data.timestamp else datetime.now()
 
     connection = get_db_connection()
     if not connection:
         raise HTTPException(status_code=500, detail="Database connection failed")
     
     try:
-        cursor = connection.cursor()
+        cursor = connection.cursor(dictionary=True)
         
-        # NOTE: Ensure you ran the SQL command to add 'risk_level' column!
+        # 3. Find Owner
+        cursor.execute("SELECT user_id FROM devices WHERE device_id = %s", (data.device_id,))
+        owner = cursor.fetchone()
+        owner_id = owner['user_id'] if owner else None
+
+        if owner_id is None:
+            print(f"⚠️ Ignored data from unclaimed device: {data.device_id}")
+            return {"status": "ignored", "message": "Device not claimed yet"}
+
+        # 4. Save Vital Reading (Standard)
         sql = """
-        INSERT INTO vitals (device_id, heart_rate, spo2, risk_level, timestamp)
-        VALUES (%s, %s, %s, %s, %s)
+        INSERT INTO vitals (user_id, device_id, heart_rate, spo2, risk_level, timestamp)
+        VALUES (%s, %s, %s, %s, %s, %s)
         """
-        # Note: I changed table name to 'vitals' to match your 'get_my_vitals' query. 
-        # If your table is named 'patient_vitals', change it here.
-        val = (data.device_id, data.heart_rate, data.spo2, risk_result, data.timestamp)
-        
+        val = (owner_id, data.device_id, data.heart_rate, data.spo2, risk_result, current_time)
         cursor.execute(sql, val)
+
+        # 5. === NEW: Create Notification if Risk is Bad ===
+        if owner_id and risk_result in ["High Risk", "Abnormal"]:
+            
+            # Decide message based on risk
+            if risk_result == "High Risk":
+                title = "High Health Risk Detected"
+                msg = f"CRITICAL: Heart Rate {data.heart_rate} bpm, SpO2 {data.spo2}%"
+                notif_type = "critical"
+            else:
+                title = "Abnormal Vitals"
+                msg = f"WARNING: Vitals are outside normal range. BPM: {data.heart_rate}"
+                notif_type = "warning"
+
+            # Insert into notifications table
+            notif_sql = """
+            INSERT INTO notifications (user_id, title, message, type)
+            VALUES (%s, %s, %s, %s)
+            """
+            cursor.execute(notif_sql, (owner_id, title, msg, notif_type))
+            print(f"🔔 Notification saved for User {owner_id}: {risk_result}")
+        # ==================================================
+
         connection.commit()
-        
-        print(f"✅ Saved: BPM={data.heart_rate}, SpO2={data.spo2}, Risk={risk_result}")
-        
-        return {
-            "status": "success",
-            "risk_level": risk_result
-        }
+        return {"status": "success", "risk_level": risk_result}
         
     except Error as e:
         print(f"SQL Error: {e}")
@@ -72,7 +100,29 @@ def get_latest_vital():
         connection.close()
 
 # --- 3. EXISTING ENDPOINT (Keep this) ---
-@router.get("/vitals/me")
-def get_my_vitals(user_id: int): 
-    # (... keep your existing logic here if needed ...)
-    pass
+@router.get("/vitals/history")
+def get_vitals_history(user_id: int = Depends(verify_token)):
+    connection = get_db_connection()
+    try:
+        cursor = connection.cursor(dictionary=True)
+
+        # Look how simple this query is now!
+        # We just ask for vitals belonging to this user_id.
+        query = """
+        SELECT heart_rate, spo2, risk_level, timestamp 
+        FROM vitals 
+        WHERE user_id = %s 
+        ORDER BY timestamp DESC 
+        LIMIT 50
+        """
+        cursor.execute(query, (user_id,))
+        results = cursor.fetchall()
+        
+        return results
+
+    except Error as e:
+        raise HTTPException(status_code=500, detail=str(e))
+    finally:
+        if connection.is_connected():
+            cursor.close()
+            connection.close()

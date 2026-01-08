@@ -21,52 +21,104 @@
 
 .notification-title {
   font-family: "Outfit", sans-serif;
-  font-size: 2.1rem;
+  font-size: 2.5rem;
   font-weight: bold;
-  color: #222;
+  color: #000;
   margin-bottom: 40px;
   text-align: center;
   z-index: 2;
 }
 
+/* --- Container for the list of cards --- */
+.notification-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 500px; /* Limits width so cards don't stretch too far */
+  z-index: 2;
+  align-items: center;
+}
+
 .notification-card {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Aligns items to top so long text looks good */
   background: #fff;
   box-shadow: 0 2px 16px rgba(44,44,44,0.07);
   border-radius: 18px;
   padding: 1.5em 2em;
-  margin-bottom: 28px;
-  width: 460px;
-  max-width: 92vw;
+  width: 100%;       /* Takes full width of the .notification-list */
+  max-width: 500px;
   min-height: 90px;
   position: relative;
-  z-index: 2;
+  transition: transform 0.2s ease;
 }
 
+.notification-card:hover {
+  transform: translateY(-2px);
+}
+
+/* --- DYNAMIC ALERT STYLES --- */
+
+/* Critical (Red) */
+.notification-card.critical {
+  border-left: 10px solid #d32f2f; 
+  background-color: #fff5f5;       
+}
+
+/* Warning (Yellow) */
+.notification-card.warning {
+  border-left: 10px solid #fbc02d;
+  background-color: #fffff0;
+}
+
+/* Normal / Default */
+.notification-card.normal {
+  border-left: 6px solid #ccc;
+}
+
+/* --- ICONS --- */
 .notification-icon {
   width: 42px;
   height: 42px;
+  min-width: 42px; /* Prevents shrinking */
   margin-right: 18px;
   border-radius: 10px;
-  background-color: #e7cfcf;
+  background-color: rgba(0,0,0,0.05);
+  
+  /* Centers the Emoji */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
 }
 
 .notification-detail {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .notification-label {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #a04a4a;
-  margin-bottom: 3px;
+  font-size: 1.4rem;
+  font-weight: 800;
+  color: b71c1c;
+  margin-bottom: 8px;
 }
 
 .notification-description {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #111;
+  line-height: 1.4;
+}
+
+.notification-time {
   font-size: 1rem;
+  font-weight: 600;
   color: #444;
+  margin-top: 12px;
+  align-self: flex-end; /* Pushes time to the right corner */
 }
 
 /* Responsive: center and stack on mobile */
@@ -80,10 +132,11 @@
     padding-top: 26px;
     padding-bottom: 30px;
   }
-  .notification-card {
+  .notification-list {
     width: 96vw;
-    min-width: 0;
-    margin-left: 0;
-    left: 0;
+  }
+  .notification-card {
+    padding: 1.5em;
+    width: 94%;
   }
 }

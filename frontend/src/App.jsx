@@ -12,6 +12,14 @@ import HeartRateLevelHistory from "./pages/Heart/HeartRateLevelHistory.jsx";
 import OxygenLevelHistory from "./pages/Oxygen/OxygenLevelHistory.jsx";
 import Explanation from "./pages/Explanation/Explanation.jsx";
 
+const ProtectedRoute = ({ children }) => {
+  const token = localStorage.getItem("access_token");
+  if (!token) {
+    return <Navigate to="/" replace />;
+  }
+  return children;
+};
+
 const App = () => {
   return (
     <Router>
@@ -22,7 +30,7 @@ const App = () => {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Register" element={<Register />} />
         <Route path="/Login" element={<Login />} />
-        <Route path="/Dashboard" element={<Dashboard />} />
+        <Route path="/Dashboard" element={<ProtectedRoute> <Dashboard /> </ProtectedRoute>} />
         <Route path="/Notification" element={<Notification />} />
         <Route path="/HeartRateLevelHistory" element={<HeartRateLevelHistory />} />
         <Route path="/OxygenLevelHistory" element={<OxygenLevelHistory />} />

@@ -61,3 +61,12 @@ Thumbs.db
 VS Code
 
 .vscode/
+
+# Ignore Python Virtual Environment
+.venv/
+venv/
+env/
+
+# Ignore Python compiled files
+__pycache__/
+*.pyc

@@ -1,7 +1,6 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from routers import auth, devices, vitals
-from ai_model import load_risk_model
+from routers import auth, devices, vitals, users, notifications
 
 app = FastAPI(title="Elderly Health Monitoring API")
 
@@ -17,6 +16,8 @@ app.add_middleware(
 app.include_router(auth.router, prefix="/auth", tags=["Authentication"])
 app.include_router(devices.router, tags=["Devices"])
 app.include_router(vitals.router, tags=["Vitals"])
+app.include_router(users.router, tags=["Users"])
+app.include_router(notifications.router, tags=["Notifications"])
 
 # You can keep the simple HTML dashboard here or move it too
 @app.get("/")

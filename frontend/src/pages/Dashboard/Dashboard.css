@@ -1,3 +1,5 @@
+/* Dashboard.css - FINAL CLEAN VERSION */
+
 .dashboard-main {
   position: relative;
   width: 100%;
@@ -21,20 +23,28 @@
   max-width: 1200px;
 }
 
+/* --- MAIN CARD STYLING --- */
 .dashboard-card {
-  background: #fff;
-  box-shadow: 0 2px 16px rgba(44,44,44,0.11);
-  border-radius: 18px;
+  background: #fff; /* Default white */
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  border-radius: 24px;
   padding: 2.5em 2em;
   min-width: 340px;
   min-height: 330px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: transform 0.2s ease;
+  justify-content: center;
+  
+  /* SMOOTH TRANSITION FOR COLORS */
+  transition: background-color 0.6s ease, transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid rgba(0,0,0,0.05);
 }
 
-
+.dashboard-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+}
 
 .card-title {
   font-size: 1.8rem;
@@ -56,91 +66,38 @@
 .value-number {
   font-size: 5rem;  
   font-weight: 800;
-  line-height: 1;   
+  line-height: 1; 
+  color: #000;  
 }
 
 .value-unit {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #888;
+  color: #444;
 }
 
-/* The indicators row inside each card */
-.indicators-row {
-  display: flex;
-  flex-direction: row;
-  gap: 36px;
-  justify-content: center;
-  margin-top: 18px;
+/* --- DYNAMIC STATUS COLORS (The !important forces the panel color) --- */
+
+/* Normal: Soft Mint Green */
+.card-normal {
+  background-color: #e3f9e5 !important; 
+  border-color: #c1eac5;
 }
 
-.indicator-block {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-width: 110px;
-}
-.indicator-color {
-  width: 36px;
-  height: 36px;
-  border-radius: 8px;
-  margin-bottom: 5px;
-}
-.indicator-normal { background: #e7cfcf; }
-.indicator-abnormal { background: #b76d6d; }
-.indicator-risk { background: #b76d6d; opacity: 0.82; }
-.indicator-label { font-weight: 700; margin-bottom: 2px; }
-.indicator-value { font-size: 1rem; text-align: center; }
-
-@media (max-width: 900px) {
-  .cards-row {
-    flex-direction: column;
-    align-items: center;
-    gap: 24px;
-  }
-  .dashboard-main {
-    padding-top: 16px;
-    padding-bottom: 18px;
-  }
-}
-.dashboard-main {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  background: rgba(217,217,217,0.20);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  padding-top: 40px;
-  padding-bottom: 40px;
+/* Abnormal: Soft Warm Yellow/Orange */
+.card-abnormal {
+  background-color: #fff8e1 !important;
+  border-color: #ffe0b2;
 }
 
-.cards-row {
-  display: flex;
-  gap: 64px;
-  justify-content: center;
-  align-items: flex-start;
-  margin-bottom: 50px;
-}
-.dashboard-card {
-  background: #fff;
-  box-shadow: 0 2px 16px rgba(44,44,44,0.11);
-  border-radius: 18px;
-  padding: 2.5em 2em;
-  min-width: 340px;
-  min-height: 330px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.card-title {
-  font-size: 2.1rem;
-  font-weight: bold;
-  margin-bottom: 1.4em;
+/* High Risk: Soft Red/Pink */
+.card-risk {
+  background-color: #ffebee !important;
+  border-color: #ffcdd2;
 }
 
-/* Indicators grid for two columns */
+
+/* --- INDICATORS LEGEND --- */
 .indicators-grid {
   display: flex;
   gap: 80px;
@@ -148,18 +105,21 @@
   align-items: flex-start;
   justify-content: center;
 }
+
 .indicator-category-label {
   font-size: 1.35rem;
   margin-bottom: 10px;
   font-weight: 500;
   letter-spacing: 0.01em;
 }
+
 .indicator-row-visual {
   display: flex;
   align-items: center;
   gap: 14px;
   margin-block: 6px;
 }
+
 .legend-swatch {
   width: 32px;
   height: 32px;
@@ -167,22 +127,20 @@
   margin-right: 5px;
   display: inline-block;
 }
-.legend-swatch.normal { background: #e7cfcf; }
-.legend-swatch.abnormal { background: #ce7979; }
-.legend-swatch.risk { background: #b76d6d;}
+
 .level-label {
   font-size: 1.16rem;
   font-weight: 700;
   margin-right: 14px;
   min-width: 98px;
 }
+
 .level-value {
   font-size: 1.14rem;
   font-weight: 400;
   color: #222;
 }
 
-/* Visually reinforce color for abnormal/risk if desired */
 .level-label.abnormal,
 .level-label.risk { color: #b76d6d; }
 
@@ -191,10 +149,10 @@
   .indicators-grid {
     flex-direction: column;
     align-items: center;
-    gap: 28px;
+    gap: 24px;
   }
-  .indicator-category-label {
-    font-size: 1.05rem;
-    margin-top: 18px;
+  .dashboard-main {
+    padding-top: 16px;
+    padding-bottom: 18px;
   }
 }

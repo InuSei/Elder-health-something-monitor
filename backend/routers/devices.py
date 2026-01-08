@@ -73,7 +73,9 @@ def claim_device(device: DeviceClaim, user_id: int = Depends(verify_token)):
                 raise HTTPException(status_code=400, detail="Device is already claimed by another user.")
 
         # 3. If it's unclaimed (user_id is NULL), claim it!
-        update_query = "UPDATE devices SET user_id = %s WHERE device_id = %s"
+        update_query = """UPDATE devices 
+            SET user_id = %s, device_status = 'Claimed Device' 
+            WHERE device_id = %s"""
         cursor.execute(update_query, (user_id, device.device_id))
         connection.commit()
 
