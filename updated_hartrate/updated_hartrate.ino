@@ -226,18 +226,6 @@ void registerDevice(){
 
   int httpResponseCode = http.POST(payload);
 
-  if (httpResponseCode == 404 || httpResponseCode == 401) {
-      Serial.println("❌ Server doesn't recognize device. Resetting registration...");
-      
-      preferences.begin("device-info", false);
-      preferences.putBool("registered", false); // Force it to be false
-      preferences.end();
-      
-      Serial.println("Rebooting to start fresh registration...");
-      delay(1000);
-      ESP.restart();
-    }
-
   if (httpResponseCode == 200) {
     Serial.println("Device successfully registered!");
     // Save the flag to permanent memory so we don't do this again
@@ -248,7 +236,7 @@ void registerDevice(){
     String response = http.getString();
     Serial.println("Server response: " + response);
   }
-  
+
   http.end();
   preferences.end(); // Close the preferences
 
@@ -288,25 +276,23 @@ void setup() {
 
 void loop() {
   server.handleClient();
+  
   // Collect samples
   for (int i = 0; i < BUFFER_SIZE; i++) {
-    while (!particleSensor.check());  // wait for new data
+    while (!particleSensor.check());
     redBuffer[i] = particleSensor.getRed();
     irBuffer[i] = particleSensor.getIR();
   }
 
-  // Compute HR and SpO2
   maxim_heart_rate_and_oxygen_saturation(
     irBuffer, BUFFER_SIZE, redBuffer,
     &spo2, &valid_spo2,
     &heartRate, &valid_heartRate
   );
 
-  // Print to Serial Monitor
   Serial.print("Heart Rate: ");
   if (valid_heartRate) Serial.print(heartRate); else Serial.print("N/A");
-  Serial.print(" bpm   |   ");
-  Serial.print("SpO2: ");
+  Serial.print(" bpm | SpO2: ");
   if (valid_spo2) Serial.print(spo2); else Serial.print("N/A");
   Serial.println(" %");
 
@@ -317,27 +303,35 @@ void loop() {
     http.begin(dataUrl);
     http.addHeader("Content-Type", "application/json");
 
-    // Build JSON payload
     String payload = "{\"device_id\":\"" + String(device_id) + "\",\"heart_rate\":" + String(heartRate) + ",\"spo2\":" + String(spo2) + "}";
-
-    Serial.println("Sending payload: " + payload); // to check whether the data is really the intended data
+    
+    // Serial.println("Sending payload: " + payload); 
 
     int httpResponseCode = http.POST(payload);
-
-    Serial.print("Sending Data... Response code: ");
+    Serial.print("Response code: ");
     Serial.println(httpResponseCode);
 
-    if (httpResponseCode > 0) {
-      String response = http.getString();
-      Serial.println("Server Response: " + response);
-    } else {
-      Serial.println("Error sending POST request");
+    // ==========================================================
+    // === CRITICAL FIX: CHECK FOR 404 (DEVICE DELETED) HERE ===
+    // ==========================================================
+    if (httpResponseCode == 404 || httpResponseCode == 401) {
+       Serial.println("❌ Server says Device Deleted! Factory Resetting...");
+       
+       // Open the exact same Namespace used in registerDevice
+       preferences.begin("device-info", false);
+       preferences.clear(); // Wipe the registration flag
+       preferences.end();
+       
+       Serial.println("Rebooting to Register as New Device...");
+       delay(2000);
+       ESP.restart(); // This restarts the board -> Runs setup() -> Runs registerDevice()
     }
+    // ==========================================================
 
     http.end();
   } else {
     Serial.println("WiFi Disconnected!");
   }
 
-  delay(3000);  // send every 3 seconds
+  delay(3000);
 }

@@ -194,8 +194,8 @@
   }
 }
 
-/* MOBILE MODE (max-width: 600px) */
-@media (max-width: 600px) {
+/* MOBILE MODE (max-width: 1200px) */
+@media (max-width: 1200px) {
   .dashboard-main {
     padding: 15px;
   }
