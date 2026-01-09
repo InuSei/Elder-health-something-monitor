@@ -27,7 +27,7 @@ def register_device(device: DeviceClaim):
         
         # Adding new device if its not in the db
         query = """
-                INSERT INTO devices (device_id, user_id, device_name)
+                INSERT INTO devices (device_id, user_id, device_status)
                 VALUES (%s, NULL, 'Unclaimed Device')
             """
         cursor.execute(query, (device.device_id,))
