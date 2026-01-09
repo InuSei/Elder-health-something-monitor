@@ -202,7 +202,6 @@
   }
 
   .cards-row {
-    flex-direction: column; /* Force Stack */
     width: 100%;
     margin-bottom: 20px;
     flex-wrap: wrap;
