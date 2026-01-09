@@ -31,7 +31,7 @@ def record_sensor_data(data: VitalData):
 
         if owner_id is None:
             print(f"⚠️ Ignored data from unclaimed device: {data.device_id}")
-            return {"status": "ignored", "message": "Device not claimed yet"}
+            raise HTTPException(status_code=404, detail="Device not claimed")
 
         # 4. Save Vital Reading (Standard)
         sql = """

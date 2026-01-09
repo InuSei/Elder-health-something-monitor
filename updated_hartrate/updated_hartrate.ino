@@ -226,14 +226,16 @@ void registerDevice(){
 
   int httpResponseCode = http.POST(payload);
 
-  if (httpResponseCode == 404 || httpResponseCode == 500) {
+  if (httpResponseCode == 404 || httpResponseCode == 401) {
       Serial.println("❌ Server doesn't recognize device. Resetting registration...");
       
       preferences.begin("device-info", false);
       preferences.putBool("registered", false); // Force it to be false
       preferences.end();
       
-      registerDevice(); // Try registering again immediately
+      Serial.println("Rebooting to start fresh registration...");
+      delay(1000);
+      ESP.restart();
     }
 
   if (httpResponseCode == 200) {
