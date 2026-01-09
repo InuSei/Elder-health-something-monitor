@@ -154,7 +154,6 @@
 }
 
 /* --- MOBILE RESPONSIVENESS (Phone Mode) --- */
-/* --- MOBILE RESPONSIVENESS (Fits tightly on phone) --- */
 @media screen and (max-width: 1200px) {
   .register-container {
     flex-direction: column;
@@ -175,6 +174,82 @@
   .register-form-card {
     width: 90%; 
     max-width: 200px; /* Limits width so it doesn't look stretched on tablets */
+    min-width: unset; 
+    margin: 0 auto 50px auto; /* Centers the card */
+    padding: 30px 20px; /* Reduced padding (was 60px) */
+    border-radius: 25px; /* Smaller rounded corners */
+  }
+
+  /* Smaller Title */
+  .register-title {
+    font-size: 32px;
+    text-align: center;
+    margin-bottom: 20px; /* Less space under title */
+    margin-top: 10px;
+  }
+
+  .register-slogan{
+    font-size: 36px;
+    margin-top: 10px;
+  }
+
+  .register-form {
+    gap: 12px; /* Tighter gap between rows (was 25px) */
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* Thinner Inputs */
+  .register-form input {
+    padding: 12px 15px; /* Smaller padding makes the bars thinner */
+    font-size: 16px; /* Slightly smaller font for mobile */
+  }
+
+  /* Full width Phone Input */
+  .input-group.phone-group {
+    width: 100%;
+    flex: 1;
+  }
+
+  /* Compact Button */
+  .register-button {
+    width: 100%;
+    padding: 12px; /* Thinner button */
+    font-size: 20px;
+    margin-top: 10px;
+  }
+
+  .register-login-text {
+    font-size: 16px;
+    margin-top: 20px;
+  }
+}
+
+
+/* --- MOBILE RESPONSIVENESS (Phone Mode) --- */
+@media screen and (max-width: 1200px) {
+  .register-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 100vh;
+    padding: 20px 0; /* Add small vertical padding to the page */
+  }
+
+  .register-left {
+    display: none; /* Hide the big image/slogan section */
+  }
+
+  .register-logo {
+    display: none; /* Hide logo if you want to save space, or keep it if needed */
+  }
+
+  /* Make the white card compact and fit the screen width */
+  .register-form-card {
+    width: 90%; 
+    max-width: 700px; /* Limits width so it doesn't look stretched on tablets */
     min-width: unset; 
     margin: 0 auto 50px auto; /* Centers the card */
     padding: 30px 20px; /* Reduced padding (was 60px) */
