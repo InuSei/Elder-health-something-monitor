@@ -26,12 +26,18 @@ def record_sensor_data(data: VitalData):
         
         # 3. Find Owner
         cursor.execute("SELECT user_id FROM devices WHERE device_id = %s", (data.device_id,))
-        owner = cursor.fetchone()
-        owner_id = owner['user_id'] if owner else None
+        record = cursor.fetchone()
+        owner_id = record['user_id'] if record else None
+
+        if not record:
+            print(f"❌ Device {data.device_id} not found in DB. Triggering wipe.")
+            # THIS is the only time we send 404 to trigger the Arduino reset
+            raise HTTPException(status_code=404, detail="Device deleted")
 
         if owner_id is None:
-            print(f"⚠️ Ignored data from unclaimed device: {data.device_id}")
-            raise HTTPException(status_code=404, detail="Device not claimed")
+            print(f"⚠️ Data received from unclaimed device: {data.device_id}")
+            # Return 200 OK so Arduino stays alive and keeps waiting for an owner
+            return {"status": "waiting", "message": "Device exists but needs an owner"}
 
         # 4. Save Vital Reading (Standard)
         sql = """
